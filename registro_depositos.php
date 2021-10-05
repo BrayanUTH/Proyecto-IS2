@@ -5,12 +5,6 @@ session_start();
 if (!isset($_SESSION['idusuario'])) {
   header("location: index.php");
 }
-
-$iduser = $_SESSION['idusuario'];
-
-$sql = "SELECT id_usuario, usuario, nombre, status FROM usuarios WHERE id_usuario = '$iduser'";
-$resultado = $con->query($sql);
-$row = $resultado->fetch_assoc();
 ?>
 
 <div class="container p-4">

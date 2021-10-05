@@ -69,7 +69,7 @@ $row = $resultado->fetch_assoc();
       <div class="modal-body">
 
         <div class="col-lg-12">
-          <input type="text" id="txtIdVecino" >
+          <input type="text" id="txtIdVecino" hidden>
           <label for="">Nombre</label>
           <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
         </div>
@@ -96,7 +96,7 @@ $row = $resultado->fetch_assoc();
 </div>
 <!-- FIN MODAL -->
 
-<script src="js/estados_vecino.js?rev=<?php echo time(); ?>"></script>
+<script src="js/vecino.js?rev=<?php echo time(); ?>"></script>
 <script>
   $(document).ready(function() {
     listarMantenimientoVecino();

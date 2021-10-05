@@ -2,7 +2,7 @@ var tablaEstadoCuenta;
 
 function listarEstadoCuenta() {
     tablaEstadoCuenta = $("#tablaEstadoCuenta").DataTable({
-        dom: 'lftiprB', //Importante para Imprimir los botones, indica la posicion de los botones
+        dom: 'lftiprB', 
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
