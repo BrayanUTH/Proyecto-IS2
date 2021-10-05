@@ -1,0 +1,20 @@
+CREATE VIEW cierres_bancos AS
+select `cierres`.`anio` AS `anio`,`cierres`.`mes` AS `mes`,sum(`cierres`.`saldos`) AS `SALDOS`,sum(`cierres`.`depositos`) AS `DEPOSITOS`,sum(`cierres`.`debitos`) AS `DEBITOS` from `cierres`
+
+CREATE VIEW cierres_cuentas AS
+select concat_ws('-',year(`cuentas`.`fecha_pago`),month(`cuentas`.`fecha_pago`)) AS `PERIODO`,year(`cuentas`.`fecha_pago`) AS `ANIO`,month(`cuentas`.`fecha_pago`) AS `MES`,sum(`cuentas`.`monto`) AS `MONTO` from `cuentas` group by concat_ws('-',year(`cuentas`.`fecha_pago`),month(`cuentas`.`fecha_pago`)) order by concat_ws('-',year(`cuentas`.`fecha_pago`),month(`cuentas`.`fecha_pago`))
+
+CREATE VIEW cierre_depositosna AS
+select sum(`saldos_vecinos`.`creditos`) AS `DEPOSITOS` from `saldos_vecinos` where `saldos_vecinos`.`id_vecino` = 99
+
+CREATE VIEW estatus_general AS
+select `detalle`.`ESTADO` AS `ESTADO`,count(0) AS `CONTADOR` from (select `saldos_vecinos`.`nombre_vecino` AS `nombre_vecino`,sum(`saldos_vecinos`.`debito`) - sum(`saldos_vecinos`.`creditos`) AS `SALDO`,if(sum(`saldos_vecinos`.`debito`) - sum(`saldos_vecinos`.`creditos`) > 0,2,1) AS `ESTADO` from `saldos_vecinos` group by `saldos_vecinos`.`nombre_vecino`) `detalle` group by `detalle`.`ESTADO`
+
+CREATE VIEW resumen_cuentasporcobrar AS
+select sum(`base`.`DEBITO`) AS `DEBITO`,sum(`base`.`CREDITOS`) AS `CREDITOS`,sum(`base`.`SALDO`) AS `SALDO` from (select `saldos_vecinos`.`nombre_vecino` AS `VECINO`,sum(`saldos_vecinos`.`debito`) AS `DEBITO`,sum(`saldos_vecinos`.`creditos`) AS `CREDITOS`,sum(`saldos_vecinos`.`debito`) - sum(`saldos_vecinos`.`creditos`) AS `SALDO` from `saldos_vecinos` group by `saldos_vecinos`.`nombre_vecino`) `base` where `base`.`SALDO` > 0
+
+CREATE VIEW resumen_saldos AS
+select concat_ws('-',year(`saldos_vecinos`.`fecha`),month(`saldos_vecinos`.`fecha`)) AS `PERIODO`,year(`saldos_vecinos`.`fecha`) AS `ANIO`,month(`saldos_vecinos`.`fecha`) AS `MES`,sum(`saldos_vecinos`.`debito`) AS `CARGOS`,sum(`saldos_vecinos`.`creditos`) AS `DEPOSITOS` from `saldos_vecinos` where `saldos_vecinos`.`id_vecino` <> 99 group by `saldos_vecinos`.`periodo` order by `saldos_vecinos`.`periodo`
+
+CREATE VIEW resumen_saldos_vecinos AS
+select `saldos_vecinos`.`nombre_vecino` AS `VECINO`,sum(`saldos_vecinos`.`debito`) AS `DEBITO`,sum(`saldos_vecinos`.`creditos`) AS `CREDITOS`,sum(`saldos_vecinos`.`debito`) - sum(`saldos_vecinos`.`creditos`) AS `SALDO` from `saldos_vecinos` group by `saldos_vecinos`.`nombre_vecino`
