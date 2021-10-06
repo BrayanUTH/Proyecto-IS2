@@ -23,14 +23,13 @@
         }
 
         function modificarVecino($id, $nombre, $casa, $bloque, $vehiculo) {
-            $sql = "UPDATE vecinos SET Nombre = '$nombre', Casa = $casa, Bloque = $bloque, vehiculos=$vehiculo WHERE id_vecino = $id";
+            $sql = "UPDATE vecinos SET Nombre = '$nombre', Casa = '$casa', Bloque = '$bloque', vehiculos='$vehiculo' WHERE id_vecino = '$id' ";
             if ($this->conexion->conexion->query($sql)) {
                 $sql2 = "UPDATE saldos_vecinos SET nombre_vecino = '$nombre' WHERE id_vecino = $id";
-                if($this->conexion->conexion->query($sql2)) {
+                if ($this->conexion->conexion->query($sql2)) {
                     return 1;
                 }
-                
-            } else {
+            }else {
                 return 0;
             }
             $this->conexion->cerrar();
