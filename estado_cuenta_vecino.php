@@ -1,50 +1,56 @@
-<?php 
-  require_once('navbar_vecino.php');
+<?php
+include('databaseconnect.php');
+session_start();
 
+if (!isset($_SESSION['idusuario'])) {
+  header("location: index.php");
+}
 ?>
 
-<div class="container">
-      <table class="table table-striped">
-        <thead>
-          <br>
-          <h5 class="text-center">Reporte de Vecinos</h5>
-          <br>
-          <tr>
-            <th scope="col">Id vecino</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Casa</th>
-            <th scope="col">Bloque</th>
-            <th scope="col">Vehiculos</th>
-            <th scope="col">Id Anterior</th>
-            <th scope="col">Ver Estado de Cuenta</th>
-          </tr>
-        </thead>
-        <tbody>
-        <!--Detalle de la tabla vecinos -->
-          <?php
-          $query = "SELECT * FROM vecinos WHERE id_vecino = $iduser";
-          $result_vecinos = mysqli_query($con,$query);
-          while($row = mysqli_fetch_array($result_vecinos)){ ?>
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header bg-secondary">
+        <h3 class="card-title">Reporte de Vecinos</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped" id="tablaEstadoCuentaVecino">
+          <thead>
             <tr>
-              <td> <?php echo $row['id_vecino'] ?></td>
-              <td> <?php echo $row['Nombre'] ?></td>
-              <td> <?php echo $row['Casa'] ?></td>
-              <td> <?php echo $row['Bloque'] ?></td>
-              <td> <?php echo $row['vehiculos'] ?></td>
-              <td> <?php echo $row['id_anterior'] ?></td>
-            
-              <td>
-                <a href="impresion_cuenta_vecino.php?id=<?php echo $row['id_vecino']?>" class="btn btn-secondary">
-                  <i class="fas fa-print"></i>
-                </a>
-              </td>
-            
+              <th>Id vecino</th>
+              <th>Nombre</th>
+              <th>Casa</th>
+              <th>Bloque</th>
+              <th>Vehiculos</th>
+              <th>Id Anterior</th>
+              <th>Ver Estado de Cuenta</th>
             </tr>
-          <?php } ?>   
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <!--Detalle de la tabla vecinos -->
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Id vecino</th>
+              <th>Nombre</th>
+              <th>Casa</th>
+              <th>Bloque</th>
+              <th>Vehiculos</th>
+              <th>Id Anterior</th>
+              <th>Ver Estado de Cuenta</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-
-?>
+<script src="js/estados_cuenta.js?rev=<?php echo time(); ?>"></script>
+<script>
+  $(document).ready(function() {
+    listarEstadoCuentaVecino();
+  });
+</script>

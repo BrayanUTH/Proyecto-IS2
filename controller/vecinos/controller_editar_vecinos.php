@@ -1,5 +1,5 @@
 <?php
-    require '../../model/modelo_estado_cuenta.php';
+    require '../../model/modelo_vecino.php';
 
     $mec = new ModeloVecino();
     

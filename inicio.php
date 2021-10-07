@@ -14,7 +14,6 @@ $sql = "SELECT id_usuario, usuario, nombre, status FROM usuarios WHERE id_usuari
 $resultado = $con->query($sql);
 $row = $resultado->fetch_assoc();
 
-
 ?>
 <!DOCTYPE html>
 <!--
@@ -183,7 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_vecinos.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_usuarios.php')">
                                 <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>
                                     Actualizar Datos Vecinos
@@ -235,7 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_trx.php')">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Mantenimiento Transacciones
+                                    Transacciones
                                 </p>
                             </a>
                         </li>
@@ -269,6 +268,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <input type="text" id="txtIdUsuarioLogeado" value="<?php echo $iduser; ?>" hidden>
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
@@ -394,10 +394,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 
 </html>
-
-
-
-
 
 
 <?php
