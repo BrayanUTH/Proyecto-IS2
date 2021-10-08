@@ -15,36 +15,37 @@ if (!isset($_SESSION['idusuario'])) {
       <h3 class="card-title">Registrar Deposito</h3>
     </div>
 
-    <form action="action_registro_deposito.php" method="POST" class="form-horizontal">
+    <!-- <form action="action_registro_deposito.php" method="POST" class="form-horizontal"> -->
+    <form class="form-horizontal">
       <div class="card-body">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>
           <div class="col-sm-10">
-            <input type="date" name="fechaDep" class="form-control" autofocus>
+            <input type="date" name="fechaDep" id="txtFecha" class="form-control" autofocus>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Monto del deposito:</label>
           <div class="col-sm-10">
-            <input type="number" min="1" name="monto" class="form-control" placeholder="00.00">
+            <input type="number" min="1" name="monto" id="txtMonto" class="form-control" placeholder="00.00">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Agencia Bancaria:</label>
           <div class="col-sm-10">
-            <input type="text" name="banco" class="form-control" placeholder="Ej: Banco Occidente" autofocus>
+            <input type="text" name="banco" class="form-control" id="" placeholder="Ej: Banco Occidente" autofocus>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Numero Referencia:</label>
           <div class="col-sm-10">
-            <input type="text" name="nReferencia" class="form-control" placeholder="Ingrese Numero Referencia" autofocus>
+            <input type="text" name="nReferencia" class="form-control" id="" placeholder="Ingrese Numero Referencia" autofocus>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Vecino o Vecina:</label>
           <div class="col-sm-10">
-            <select name="idVecino" class="form-control">
+            <select name="idVecino" class="form-control" id="">
 
               <?php
               include("databaseconnect.php");
@@ -70,7 +71,8 @@ if (!isset($_SESSION['idusuario'])) {
         <div class="form-group row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
-            <input type="submit" class="btn btn-success btn-block" name="registrar_deposito" value="Aplicar">
+            <button type="button" class="btn btn-success btn-block" onclick="registrarDeposito()" >Aplicar </button>
+            <!-- <input type="submit" class="btn btn-success btn-block" name="registrar_deposito" value="Aplicar"> -->
           </div>
         </div>
 
@@ -79,3 +81,4 @@ if (!isset($_SESSION['idusuario'])) {
   </div>
   <!-- </div> -->
 </div>
+<script src="js/depositos.js?rev=<?php echo time(); ?>"></script>

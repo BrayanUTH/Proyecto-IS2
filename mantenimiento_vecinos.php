@@ -122,7 +122,7 @@ $row = $resultado->fetch_assoc();
 
 <!-- INICIO MODAL -->
 <div class="modal fade" id="modal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Actualizar datos de vecino</h5>
