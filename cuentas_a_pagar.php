@@ -14,42 +14,52 @@
   $row = $resultado->fetch_assoc();
 
 ?>
-
-
-
 <div class="container p-4">
-  <div class="row">
-      <div class="col-md-4">
-        <div class="card card-body">
-          <h6>Registro de Pago</h6>
-          <br>
-          <form action="action_registro_pago.php" method="POST">
-            <div class="form-group"> 
-              <input type="text" name="fechaPago" class="form-control" placeholder="Ingrese Fecha AAAA-MM-DD" autofocus>
-            </div>
-            <div class="form-group"> 
-              <input type="text" name="montoPago" class="form-control" placeholder="Ingrese Monto del Pago" autofocus>
-            </div>
-            <div class="form-group">
-              <label>Seleccione el Tipo de Gasto</label>
-              <select name ="tipoGasto" class="form-control">
-              <option value="Seguridad">Seguridad</option>
-              <option value="Aguas de San Pedro">Aguas de San Pedro</option>
-              <option value="Aseo">Aseo</option>
-              <option value="Inversiones">Inversiones o Mantenimiento</option>
-              </select>
-            </div>
-            <div class="form-group"> 
-              <input type="text" name="detalle" class="form-control" placeholder="Ingrese descripcion del gasto" autofocus>
-            </div> 
-            <input type="submit" class="btn btn-success btn-block" name ="registrar_pago" value ="Aplicar"> 
-          </form>  
+    <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">Registrar Pago</h3>
         </div>
-      </div>
-  </div> 
+        <form action="action_registro_pago.php" method="POST">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>
+                <div class="col-sm-10">
+                  <input type="date" name="fechaPago" class="form-control" placeholder="" autofocus>  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Monto:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="montoPago" class="form-control" placeholder="Ingrese Monto del Pago" autofocus>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo de Gasto</label>
+                <div class="col-sm-10">
+                  <select name ="tipoGasto" class="form-control">
+                  <option value="Seguridad">Seguridad</option>
+                  <option value="Aguas de San Pedro">Aguas de San Pedro</option>
+                  <option value="Aseo">Aseo</option>
+                  <option value="Inversiones">Inversiones o Mantenimiento</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row"> 
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
+                <div class="col-sm-10">
+                  <input type="text" name="detalle" class="form-control" placeholder="Ingrese descripcion del gasto" autofocus>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <input type="submit" class="btn btn-success btn-block" name ="registrar_pago" value ="Aplicar"> 
+                </div>
+             </div> 
+            </div>
+          </form>
+    </div>
 </div>
-
-
 
 <div class="container">
       <table class="table table-striped">
