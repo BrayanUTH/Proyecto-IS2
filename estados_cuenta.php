@@ -12,7 +12,7 @@ if (!isset($_SESSION['idusuario'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-header bg-secondary">
-        <h3 class="card-title">Registro de vecinos</h3>
+        <h3 class="card-title">Informacion Vecinos</h3>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped" id="tablaEstadoCuenta">

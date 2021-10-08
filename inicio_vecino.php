@@ -174,6 +174,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="cargarCont('contenido-principal', 'vehiculos.php');">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>
+                                  Vehiculos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarCont('contenido-principal', 'estado_cuenta_vecino.php');">
                                 <i class="nav-icon fas fa-address-card"></i>
                                 <p>
