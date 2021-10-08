@@ -62,45 +62,47 @@
 </div>
 
 <div class="container">
-      <table class="table table-striped">
-        <thead>
-          <br>
-          <h5 class="text">Mantenimiento de Egresos o Gastos</h5>
-          <br>
-          <tr>
-            <th scope="col">Id Egreso</th>
-            <th scope="col">Tipo de Egreso o Gasto</th>
-            <th scope="col">Fecha del Egreso</th>
-            <th scope="col">Descripción de Egreso o Gasto</th>
-            <th scope="col">Monto</th>
-            <th scope="col">Accion</th>
-          </tr>
-        </thead>
-        <tbody>
-        <!--Detalle de la tabla vecinos -->
-          <?php
-          $query = "SELECT * FROM cuentas";
-          $result = mysqli_query($con,$query);
-          while($row = mysqli_fetch_array($result)){ ?>
+      <div class="card-header bg-secondary">
+        <h3 class="card-title">Mantenimiento de Egresos o Gastos</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped" id="tblegresos">
+          <thead>
             <tr>
-              <td style="font-size:70%;"> <?php echo $row['id_cuentas'] ?></td>
-              <td style="font-size:70%;"> <?php echo $row['descripcion_cuentas'] ?></td>
-              <td style="font-size:70%;"> <?php echo $row['fecha_pago'] ?></td>
-              <td style="font-size:60%;"> <?php echo $row['detalle'] ?></td>
-              <td style="font-size:70%;"> <?php echo $row['monto'] ?></td>
-              <td>
-                <a href="editar_egresos.php?id=<?php echo $row['id_cuentas']?>" class="btn btn-secondary">
-                  <i class="fas fa-user-edit"></i>
-                </a>
-                <a href="eliminar_egreso.php?id=<?php echo $row['id_cuentas']?>" class="btn btn-danger">
-                  <i class="fas fa-trash"></i>
-                </a>
-              </td>
-            
+              <th scope="col">Id Egreso</th>
+              <th scope="col">Tipo de Egreso o Gasto</th>
+              <th scope="col">Fecha del Egreso</th>
+              <th scope="col">Descripción de Egreso o Gasto</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Accion</th>
             </tr>
-          <?php } ?>   
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          <!--Detalle de la tabla vecinos -->
+            <?php
+            $query = "SELECT * FROM cuentas";
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_array($result)){ ?>
+              <tr>
+                <td> <?php echo $row['id_cuentas'] ?></td>
+                <td> <?php echo $row['descripcion_cuentas'] ?></td>
+                <td> <?php echo $row['fecha_pago'] ?></td>
+                <td> <?php echo $row['detalle'] ?></td>
+                <td> <?php echo $row['monto'] ?></td>
+                <td>
+                  <a href="editar_egresos.php?id=<?php echo $row['id_cuentas']?>" class="btn btn-secondary">
+                    <i class="fas fa-user-edit"></i>
+                  </a>
+                  <!--<a href="eliminar_egreso.php?id=<?php echo $row['id_cuentas']?>" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </a>-->
+                </td>
+              
+              </tr>
+            <?php } ?>   
+          </tbody>
+        </table>
+    </div>
 <br>
 <br>
 <div>

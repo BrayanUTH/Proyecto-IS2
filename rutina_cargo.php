@@ -20,7 +20,7 @@
       <h6>Aplicar Cargo Mensual a los vecinos</h6>
     </div>
     <form action="action_rutina_cargo.php" method="POST">
-      <div class="card card-body">
+      <div class="card-body">
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>
               <div class="col-sm-10">

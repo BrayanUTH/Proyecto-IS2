@@ -22,16 +22,30 @@
 
       <form action="action_registro_visitas.php" method="POST">
       <div class="card-body">
-              <div class="form-group"> 
-                <label> Ingrese Fecha Eje: 2021-08-31</label>
-                <input type="text" name="fechaVisita" class="form-control" placeholder="AAAA-MM-DD" autofocus>
+              <div class="form-group row"> 
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>
+                <div class="col-sm-10">
+                  <input type="date" name="fechaVisita" class="form-control" autofocus>
+                </div>
               </div>
-              <div class="form-group"> 
-                <label> Nombre del Visitante:</label>
-                <input name="visitante" class="form-control" placeholder="¿Quién lo visita?" autofocus>               
-                </input>
+              <div class="form-group row"> 
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="visitante" class="form-control" placeholder="¿Quién lo visita?" autofocus>               
+                </div>
+              </div>
+              <div class="form-group row"> 
+                <label for="inputEmail3" class="col-sm-2 col-form-label"> Cédula</label>
+                <div class="col-sm-10">
+                  <input type="text" name="visitante" class="form-control" placeholder="Número de identificación del visitante" autofocus>               
+                </div>
               </div> 
-            <input type="submit" class="btn btn-success btn-block" name ="registrar_visita" value ="Anunciar"> 
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <input type="submit" class="btn btn-success btn-block" name ="registrar_visita" value ="Anunciar"> 
+                </div>
+              </div>
             </form>  
         </div>
   </div>
