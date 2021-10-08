@@ -116,3 +116,8 @@ function listarEstatusGeneralVecino() {
     select: true
   });
 }
+
+function abrirModal() {
+  $("#modal_registro").modal({ backdrop: 'static', keyboard: false });
+  $("#modal_registro").modal('show');
+}
