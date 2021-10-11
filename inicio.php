@@ -222,14 +222,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_usuarios.php')">
                                 <i class="nav-icon fab fa-dropbox"></i>
                                 <p>
                                     Usuarios
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_trx.php')">
                                 <i class="nav-icon fas fa-th"></i>
