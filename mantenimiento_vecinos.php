@@ -102,6 +102,22 @@ $row = $resultado->fetch_assoc();
             <label for="">Cantidad de Vehiculos</label>
             <input type="number" min="0" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
           </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Username</label>
+            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el username para la persona">
+          </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Password</label>
+            <input type="password" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="*******************">
+          </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Rol</label>
+            <select class="form-control" id="txtRolVecino">
+              <option value="Administrador">Administrador</option>
+              <option value="Vecino">Vecino</option>
+              <option value="Vigilante">Vigilante</option>
+            </select>
+          </div>
           <div class="col-lg-12">
             <label for="">Fotografia</label>
             <div class="custom-file mb-3">
@@ -122,7 +138,7 @@ $row = $resultado->fetch_assoc();
 
 <!-- INICIO MODAL -->
 <div class="modal fade" id="modal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Actualizar datos de vecino</h5>
@@ -132,7 +148,65 @@ $row = $resultado->fetch_assoc();
       </div>
       <div class="modal-body">
 
-        <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-6 mb-3">
+            <label for="">Nombres</label>
+            <input type="text" class="form-control" id="txtNombreR" placeholder="Ingrese los nombres del vecino">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Apellidos</label>
+            <input type="text" class="form-control" id="txtApellidosR" placeholder="Ingrese los apellidos del vecino">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Numero de Telefono</label>
+            <input type="text" class="form-control" id="txtTelefonoR" placeholder="Tel Ej: +504 0000-0000">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Correo Electronico</label>
+            <input type="email" class="form-control" id="txtCorreoR" placeholder="Correo Ej: correo@correo.com">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Cedula - Identidad</label>
+            <input type="email" class="form-control" id="txtIdentidad" placeholder="Ingrese el numero de identidad, sin separaciones ni guiones">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Numero de casa</label>
+            <input type="text" class="form-control" id="txtNumeroCasa" placeholder="Ingrese el numero de casa">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Numero de bloque</label>
+            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el numero de bloque">
+          </div>
+          <div class="col-lg-6 mb-3">
+            <label for="">Cantidad de Vehiculos</label>
+            <input type="number" min="0" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
+          </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Username</label>
+            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el username para la persona">
+          </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Password</label>
+            <input type="password" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="*******************">
+          </div>
+          <div class="col-lg-4 mb-3">
+            <label for="">Rol</label>
+            <select class="form-control" id="txtRolVecino">
+              <option value="Administrador">Administrador</option>
+              <option value="Vecino">Vecino</option>
+              <option value="Vigilante">Vigilante</option>
+            </select>
+          </div>
+          <div class="col-lg-12">
+            <label for="">Fotografia</label>
+            <div class="custom-file mb-3">
+              <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+              <label class="custom-file-label" for="validatedCustomFile">Ingresar Fotografia</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-12">
           <input type="text" id="txtIdVecino" hidden>
           <label for="">Nombre</label>
           <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
@@ -148,7 +222,7 @@ $row = $resultado->fetch_assoc();
         <div class="col-lg-12">
           <label for="">Cantidad de Vehiculos</label>
           <input type="text" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
-        </div>
+        </div> -->
 
       </div>
       <div class="modal-footer">

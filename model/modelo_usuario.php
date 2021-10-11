@@ -32,4 +32,14 @@
             $this->conexion->cerrar();
         }
 
+        // function registrarDeposito($fecha, $monto) {
+        //     $sql = "INSERT INTO usuarios SET usuario = '$username', password = '$password'WHERE id_usuario = '$id' ";
+        //     if ($this->conexion->conexion->query($sql)) {
+        //         return 1;
+        //     }else {
+        //         return 0;
+        //     }
+        //     $this->conexion->cerrar();
+        // }
+
     }

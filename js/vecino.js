@@ -45,11 +45,11 @@ $('#tablaMantenimientoVecino').on('click', '.editar', function () {
   }
   $("#modal_editar").modal({ backdrop: 'static', keyboard: false }); //Para que no se cierre el modal
   $("#modal_editar").modal('show');
-  document.querySelector("#txtIdVecino").value = data.id_vecino;
-  document.querySelector("#txtNombre").value = data.Nombre;
-  document.querySelector("#txtNumeroCasa").value = data.Casa;
-  document.querySelector("#txtNumeroBloque").value = data.Bloque;
-  document.querySelector("#txtVehiculo").value = data.vehiculos;
+  // document.querySelector("#txtIdVecino").value = data.id_vecino;
+  // document.querySelector("#txtNombre").value = data.Nombre;
+  // document.querySelector("#txtNumeroCasa").value = data.Casa;
+  // document.querySelector("#txtNumeroBloque").value = data.Bloque;
+  // document.querySelector("#txtVehiculo").value = data.vehiculos;
 });
 
 function editarInformacionVecino() {
