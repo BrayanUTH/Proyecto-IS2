@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Residencial | Costasol</title>
+    <title>RFM SOFT</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -116,6 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
+                    <img id="txtImagenUsuarioDropdown" width="25px" class="img-circle" src="img/default.png"/>
                         <span id="txtUsarioDropdown"><?php echo utf8_decode($row['nombre']); ?></span></a>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -133,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Brand Logo -->
             <a href="index.php" class="brand-link">
                 <img src="plantilla/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Residencial</span>
+                <span class="brand-text font-weight-light">RFM SOFT</span>
             </a>
 
             <!-- Sidebar -->
@@ -141,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img id="imagenUsuarioPrincipal" class="img-circle elevation-2">
+                        <img id="imagenUsuarioPrincipal" class="img-circle elevation-2" src="img/default.png">
                     </div>
                     <div class="info">
                         <a href="#" id="lblUsuarioSidebar"><?php echo utf8_decode($row['nombre']); ?></a>
@@ -167,59 +168,74 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'registro_depositos.php')">
-                                <i class="nav-icon fas fa-user-shield"></i>
+                                <i class="nav-icon fas fa-money-check"></i>
                                 <p>
                                     Depositos
                                 </p>
-                                
                             </a>
-                           
+
                         </li>
                         
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'estados_cuenta.php')">
-                                <i class="nav-icon fas fa-address-card"></i>
+                                <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                 <p>
                                     Estados de Cuenta
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_vecinos.php')">
-                                <i class="nav-icon fas fa-chart-bar"></i>
-                                <p>
-                                    Vecinos
-                                </p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'cuentas_a_pagar.php')">
-                                <i class="nav-icon fas fa-people-carry"></i>
+                                <i class="nav-icon fas fa-money-bill-alt"></i>
                                 <p>
                                     Registro de Pagos
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'status_general_vecinos.php')">
-                                <i class="nav-icon fas fa-users-cog"></i>
-                                <p>
-                                    Reportes Varios
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'arreglos_pago.php')">
-                                <i class="nav-icon fa fa-cubes"></i>
+                                <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Convenios de Pagos
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_trx.php')">
+                                <i class="nav-icon fas fa-hand-holding-usd"></i>
+                                <p>
+                                    Transacciones
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'rutina_cargo.php')">
+                                <i class="nav-icon fas fa-comment-dollar"></i>
+                                <p>
+                                    Rutina de Cargo Mensual
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_vecinos.php')">
+                                <i class="nav-icon fas fa-user-plus"></i>
+                                <p>
+                                    Vecinos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'status_general_vecinos.php')">
+                                <i class="nav-icon fas fa-file-signature"></i>
+                                <p>
+                                    Reportes Varios
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'registro_visitas.php')">
-                                <i class="nav-icon fas fa-list-ol"></i>
+                                <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Registro de Visitas
                                 </p>
@@ -233,22 +249,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li> -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_trx.php')">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Transacciones
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'rutina_cargo.php')">
-                                <i class="nav-icon fas fa-shopping-cart"></i>
-                                <p>
-                                    Rutina de Cargo Mensual
-                                </p>
-                            </a>
-                        </li>
 
                     </ul>
                 </nav>
@@ -270,10 +270,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- CONTENIDO PRINCIPAL -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
+                    <!-- <div class="row">
                         <input type="text" id="txtIdUsuarioLogeado" value="<?php echo $iduser; ?>" hidden>
                         <div class="col-lg-3 col-6">
-                            <!-- small box -->
+                            
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3>150</h3>
@@ -288,7 +288,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
 
                         <div class="col-lg-3 col-6">
-                            <!-- small box -->
+                            
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3>53<sup style="font-size: 20px">%</sup></h3>
@@ -301,9 +301,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- ./col -->
+                        
                         <div class="col-lg-3 col-6">
-                            <!-- small box -->
+                            
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3>44</h3>
@@ -316,9 +316,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- ./col -->
+                        
                         <div class="col-lg-3 col-6">
-                            <!-- small box -->
+                            
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>65</h3>
@@ -331,9 +331,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                    </div> -->
+                </div>
             </div>
             <!-- /.content -->
         </div>
@@ -349,10 +348,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                Residencial
+            RFM SOFT
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="#">Costasol</a>.</strong> Todos los derechos reservados.
+            <strong>Copyright &copy; 2021 <a href="#">RFM SOFT</a>.</strong> Todos los derechos reservados.
         </footer>
     </div>
     <!-- ./wrapper -->

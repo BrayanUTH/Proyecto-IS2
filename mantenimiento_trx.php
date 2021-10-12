@@ -11,7 +11,7 @@ if (!isset($_SESSION['idusuario'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-header bg-secondary">
-        <h3 class="card-title">Actualizar Ultimas 30 Transacciones</h3>
+        <h3 class="card-title">Ultimas 30 Transacciones</h3>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped" id="tablaTransacciones">

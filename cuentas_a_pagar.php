@@ -47,7 +47,8 @@
               <div class="form-group row"> 
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
                 <div class="col-sm-10">
-                  <input type="text" name="detalle" class="form-control" placeholder="Ingrese descripcion del gasto" autofocus>
+                  <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Ingrese la descripcion del gasto generado"></textarea>
+                  <!-- <input type="text" name="detalle" class="form-control" placeholder="Ingrese descripcion del gasto" autofocus> -->
                 </div>
               </div>
               <div class="form-group row">

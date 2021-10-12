@@ -1,5 +1,4 @@
 <?php 
-  require_once('navbar_vecino.php');
   require('phpqrcode/qrlib.php');
 
 

@@ -59,7 +59,8 @@
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Detalles:</label> 
               <div class="col-sm-10">
-                <input type="text" name="detalle" class="form-control" placeholder="Ingrese Detalles del Convenio" autofocus>
+                <textarea name="" id="" cols="30" rows="4" placeholder="Ingrese Detalles del Convenio" class="form-control"></textarea>
+                <!-- <input type="text" name="detalle" class="form-control" placeholder="Ingrese Detalles del Convenio" autofocus> -->
               </div>
             </div>
             <div class="form-group row">
