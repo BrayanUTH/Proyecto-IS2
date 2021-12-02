@@ -10,7 +10,7 @@ if (!isset($_SESSION['idusuario'])) {
 
 $iduser = $_SESSION['idusuario'];
 
-$sql = "SELECT id_usuario, usuario, nombre, status FROM usuarios WHERE id_usuario = '$iduser'";
+$sql = "SELECT * FROM vecino WHERE id_vecino = '$iduser'";
 $resultado = $con->query($sql);
 $row = $resultado->fetch_assoc();
 
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <span id="txtUsarioDropdown"><?php echo utf8_decode($row['nombre']); ?></span></a>
+                        <span id="txtUsarioDropdown"><?php echo utf8_decode($row['usuario']); ?></span></a>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <a href="logout.php" class="dropdown-item">
@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <img id="imagenUsuarioPrincipal" class="img-circle elevation-2">
                     </div>
                     <div class="info">
-                        <a href="#" id="lblUsuarioSidebar"><?php echo utf8_decode($row['nombre']); ?></a>
+                        <a href="#" id="lblUsuarioSidebar"><?php echo utf8_decode($row['usuario']); ?></a>
                     </div>
                 </div>
 
