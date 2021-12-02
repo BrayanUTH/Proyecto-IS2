@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['idusuario'])) {
+  header("location: index.php");
+}
+?>
+
 <div class="content-header">
   <div class="container-fluid">
     <div class="card">
