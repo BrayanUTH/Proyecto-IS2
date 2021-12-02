@@ -1,4 +1,3 @@
-
 <?php
 
 include("databaseconnect.php");
@@ -9,22 +8,20 @@ if (isset($_SESSION['idusuario'])) {
 if (!empty($_POST)) {
   $usuario = $_POST['usuario'];
   $password = $_POST['password'];
-  $sql = "SELECT id_usuario, usuario, password, status FROM usuarios WHERE usuario = '$usuario' and password = '$password'";
+  $sql = "SELECT id_vecino, usuario, contrasenia, estado, tipo_usuario FROM vecino WHERE usuario = '$usuario' AND contrasenia = '$password'";
   $resultado = $con->query($sql);
-  $rows = $resultado->num_rows;
-  if ($rows > 0) {
+  
+  if ($resultado) {
     $row = $resultado->fetch_assoc();
-    $_SESSION['idusuario'] = $row['id_usuario'];
+    $_SESSION['idusuario'] = $row['id_vecino'];
 
-    $perfil = $row['status'];
-
-    if ($perfil == 1) {
+    if ($row['tipo_usuario'] == "ADMINISTRADOR" && $row['estado'] == "ACTIVO") {
       header("location:inicio.php");
     }
-    if ($perfil == 2) {
+    if ($row['tipo_usuario'] == "VECINO" && $row['estado'] == "ACTIVO") {
       header("location:inicio_vecino.php");
     }
-    if ($perfil == 3) {
+    if ($row['tipo_usuario'] == "VIGILANTE" && $row['estado'] == "ACTIVO") {
       header("location:inicio_vigilancia.php");
     }
   } else {

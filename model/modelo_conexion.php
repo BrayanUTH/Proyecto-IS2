@@ -7,15 +7,15 @@
         public $conexion;
 
         public function __construct() {
-            $this->servidor = "localhost";
-            $this->usuario = "id12632217_admin";
-            $this->contrasena = "~HQ-!(b*6MF27Vry";
-            $this->basedatos = "residencial";
+            $this->servidor = "156.67.74.151";
+            $this->usuario = "u357103333_user1";
+            $this->contrasena = "Residencial97!";
+            $this->basedatos = "u357103333_residencial";
         }
 
         function conectar() {
             try {
-                $this->conexion = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->basedatos);
+                $this->conexion = mysqli_connect($this->servidor, $this->usuario, $this->contrasena, $this->basedatos);
                 $this->conexion->set_charset("utf8");
 
             } catch (\Throwable $th) {
@@ -25,7 +25,7 @@
 
         function cerrar() {
             try {
-                $this->conexion->close();
+                mysqli_close($this->conexion);
 
             } catch (\Throwable $th) {
                 echo 'Error al cerrar la conexion a la BDD </h2>'.$th->getMessage();
