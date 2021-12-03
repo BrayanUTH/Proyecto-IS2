@@ -1,4 +1,3 @@
-
 <?php
 
 include('databaseconnect.php');
@@ -166,7 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'registro_depositos.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/deposito/vista_mantenimiento_deposito.php')">
                                 <i class="nav-icon fas fa-money-check"></i>
                                 <p>
                                     Depositos
@@ -174,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
 
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'estados_cuenta.php')">
                                 <i class="nav-icon fas fa-file-invoice-dollar"></i>
@@ -183,9 +182,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/vecino/vista_mantenimiento_vecino.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'cuentas_a_pagar.php')">
                                 <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>
                                     Registro de Pagos
@@ -240,15 +239,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_usuarios.php')">
-                                <i class="nav-icon fab fa-dropbox"></i>
-                                <p>
-                                    Usuarios
-                                </p>
-                            </a>
-                        </li> -->
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -347,7 +337,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-            RFM SOFT
+                RFM SOFT
             </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; 2021 <a href="#">RFM SOFT</a>.</strong> Todos los derechos reservados.
