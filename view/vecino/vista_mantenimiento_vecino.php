@@ -19,12 +19,17 @@ if (!isset($_SESSION['idusuario'])) {
         <table class="table table-bordered table-striped" id="tablaMantenimientoVecino">
           <thead>
             <tr>
-              <th>Id vecino</th>
+              <th>#</th>
               <th>Nombre</th>
+              <th>DNI</th>
+              <th>F Nacimiento</th>
+              <th>Telefono</th>
               <th>Casa</th>
               <th>Bloque</th>
               <th>Vehiculos</th>
-              <th>Id Anterior</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Estado</th>
               <th>Accion</th>
             </tr>
           </thead>
@@ -34,12 +39,17 @@ if (!isset($_SESSION['idusuario'])) {
           </tbody>
           <tfoot>
             <tr>
-              <th>Id vecino</th>
+              <th>#</th>
               <th>Nombre</th>
+              <th>DNI</th>
+              <th>F Nacimiento</th>
+              <th>Telefono</th>
               <th>Casa</th>
               <th>Bloque</th>
               <th>Vehiculos</th>
-              <th>Id Anterior</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Estado</th>
               <th>Accion</th>
             </tr>
           </tfoot>
@@ -60,67 +70,70 @@ if (!isset($_SESSION['idusuario'])) {
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-6 mb-3">
-            <label for="">Nombres</label>
-            <input type="text" class="form-control" id="txtNombreR" placeholder="Ingrese los nombres del vecino">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Apellidos</label>
-            <input type="text" class="form-control" id="txtApellidosR" placeholder="Ingrese los apellidos del vecino">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de Telefono</label>
-            <input type="text" class="form-control" id="txtTelefonoR" placeholder="Tel Ej: +504 0000-0000">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Correo Electronico</label>
-            <input type="email" class="form-control" id="txtCorreoR" placeholder="Correo Ej: correo@correo.com">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Cedula - Identidad</label>
-            <input type="email" class="form-control" id="txtIdentidad" placeholder="Ingrese el numero de identidad, sin separaciones ni guiones">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de casa</label>
-            <input type="text" class="form-control" id="txtNumeroCasa" placeholder="Ingrese el numero de casa">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de bloque</label>
-            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el numero de bloque">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Cantidad de Vehiculos</label>
-            <input type="number" min="0" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Username</label>
-            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el username para la persona">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Password</label>
-            <input type="password" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="*******************">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Rol</label>
-            <select class="form-control" id="txtRolVecino">
-              <option value="Administrador">Administrador</option>
-              <option value="Vecino">Vecino</option>
-              <option value="Vigilante">Vigilante</option>
-            </select>
-          </div>
-          <div class="col-lg-12">
-            <label for="">Fotografia</label>
-            <div class="custom-file mb-3">
-              <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-              <label class="custom-file-label" for="validatedCustomFile">Ingresar Fotografia</label>
+        <form action="" id="frmRegistrarVecino">
+          <div class="row">
+            <div class="col-lg-6 mb-3">
+              <label for="">Primer Nombre</label>
+              <input type="text" class="form-control" id="txtPrimerNombre" placeholder="Ingrese el primer nombre del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Segundo Nombre</label>
+              <input type="text" class="form-control" id="txtSegundoNombre" placeholder="Ingrese el segundo nombre del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Primer Apellido</label>
+              <input type="text" class="form-control" id="txtPrimerApellido" placeholder="Ingrese el primer apellido del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Segundo Apellido</label>
+              <input type="text" class="form-control" id="txtSegundoApellido" placeholder="Ingrese el segundo apellido del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Fecha Nacimiento</label>
+              <input type="date" class="form-control" id="txtFechaNacimiento" placeholder="Ingrese la fecha de nacimiento del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de Telefono</label>
+              <input type="text" class="form-control" id="txtTelefonoR" placeholder="Tel Ej: +504 0000-0000">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Cedula - Identidad</label>
+              <input type="text" class="form-control" id="txtIdentidad" placeholder="Ingrese el numero de identidad, sin separaciones ni guiones">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de casa</label>
+              <input type="text" class="form-control" id="txtNumeroCasa" placeholder="Ingrese el numero de casa">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de bloque</label>
+              <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el numero de bloque">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Cantidad de Vehiculos</label>
+              <input type="number" min="0" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
+            </div>
+            <div class="col-lg-4 mb-3">
+              <label for="">Username</label>
+              <input type="text" class="form-control" id="txtUsername" placeholder="Ingrese el username para la persona">
+            </div>
+            <div class="col-lg-4 mb-3">
+              <label for="">Password</label>
+              <input type="password" name="vehiculos" id="txtPassword" class="form-control" placeholder="*******************">
+            </div>
+            <div class="col-lg-4 mb-3">
+              <label for="">Tipo Usuario</label>
+              <select class="form-control" id="txtRolVecino">
+                <option value="ADMINISTRADOR">Administrador</option>
+                <option value="VECINO">Vecino</option>
+                <option value="VIGILANTE">Vigilante</option>
+              </select>
             </div>
           </div>
-        </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar Vecino</button>
+        <button type="button" class="btn btn-primary" onclick="registrarVecino()">Guardar Vecino</button>
       </div>
     </div>
   </div>
@@ -129,7 +142,7 @@ if (!isset($_SESSION['idusuario'])) {
 
 <!-- INICIO MODAL -->
 <div class="modal fade" id="modal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Actualizar datos de vecino</h5>
@@ -139,86 +152,79 @@ if (!isset($_SESSION['idusuario'])) {
       </div>
       <div class="modal-body">
 
-        <div class="row">
-          <div class="col-lg-6 mb-3">
-            <label for="">Nombres</label>
-            <input type="text" class="form-control" id="txtNombreR" placeholder="Ingrese los nombres del vecino">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Apellidos</label>
-            <input type="text" class="form-control" id="txtApellidosR" placeholder="Ingrese los apellidos del vecino">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de Telefono</label>
-            <input type="text" class="form-control" id="txtTelefonoR" placeholder="Tel Ej: +504 0000-0000">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Correo Electronico</label>
-            <input type="email" class="form-control" id="txtCorreoR" placeholder="Correo Ej: correo@correo.com">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Cedula - Identidad</label>
-            <input type="email" class="form-control" id="txtIdentidad" placeholder="Ingrese el numero de identidad, sin separaciones ni guiones">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de casa</label>
-            <input type="text" class="form-control" id="txtNumeroCasa" placeholder="Ingrese el numero de casa">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Numero de bloque</label>
-            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el numero de bloque">
-          </div>
-          <div class="col-lg-6 mb-3">
-            <label for="">Cantidad de Vehiculos</label>
-            <input type="number" min="0" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Username</label>
-            <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el username para la persona">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Password</label>
-            <input type="password" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="*******************">
-          </div>
-          <div class="col-lg-4 mb-3">
-            <label for="">Rol</label>
-            <select class="form-control" id="txtRolVecino">
-              <option value="Administrador">Administrador</option>
-              <option value="Vecino">Vecino</option>
-              <option value="Vigilante">Vigilante</option>
-            </select>
-          </div>
-          <div class="col-lg-12">
-            <label for="">Fotografia</label>
-            <div class="custom-file mb-3">
-              <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-              <label class="custom-file-label" for="validatedCustomFile">Ingresar Fotografia</label>
+        <form id="frmEditarVecino">
+          <div class="row">
+            <div class="col-lg-6 mb-3">
+              <label for="">Primer Nombre</label>
+              <input type="text" class="form-control" id="txtPrimerNombreEditar" placeholder="Ingrese el primer nombre del vecino">
+              <input type="hidden" id="txtIdVecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Segundo Nombre</label>
+              <input type="text" class="form-control" id="txtSegundoNombreEditar" placeholder="Ingrese el segundo nombre del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Primer Apellido</label>
+              <input type="text" class="form-control" id="txtPrimerApellidoEditar" placeholder="Ingrese el primer apellido del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Segundo Apellido</label>
+              <input type="text" class="form-control" id="txtSegundoApellidoEditar" placeholder="Ingrese el segundo apellido del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Fecha Nacimiento</label>
+              <input type="date" class="form-control" id="txtFechaNacimientoEditar" placeholder="Ingrese la fecha de nacimiento del vecino">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de Telefono</label>
+              <input type="text" class="form-control" id="txtTelefonoEditar" placeholder="Tel Ej: +504 0000-0000">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Cedula - Identidad</label>
+              <input type="email" class="form-control" id="txtIdentidadEditar" placeholder="Ingrese el numero de identidad, sin separaciones ni guiones">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de casa</label>
+              <input type="text" class="form-control" id="txtNumeroCasaEditar" placeholder="Ingrese el numero de casa">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Numero de bloque</label>
+              <input type="text" class="form-control" id="txtNumeroBloqueEditar" placeholder="Ingrese el numero de bloque">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Cantidad de Vehiculos</label>
+              <input type="number" min="0" name="vehiculos" id="txtVehiculoEditar" class="form-control" placeholder="Qty. Vehiculos">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Username</label>
+              <input type="text" class="form-control" id="txtUsernameEditar" placeholder="Ingrese el username para la persona">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Password</label>
+              <input type="password" name="vehiculos" id="txtPasswordEditar" class="form-control" placeholder="*******************">
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">Tipo Usuario</label>
+              <select class="form-control" id="txtRolVecinoEditar">
+                <option value="ADMINISTRADOR">Administrador</option>
+                <option value="VECINO">Vecino</option>
+                <option value="VIGILANTE">Vigilante</option>
+              </select>
+            </div>
+            <div class="col-lg-6 mb-3">
+              <label for="">ESTADO</label>
+              <select class="form-control" id="txtEstado">
+                <option value="ACTIVO">Activo</option>
+                <option value="INACTIVO">Inactivo</option>
+              </select>
             </div>
           </div>
-        </div>
-
-        <!-- <div class="col-lg-12">
-          <input type="text" id="txtIdVecino" hidden>
-          <label for="">Nombre</label>
-          <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese su nombre">
-        </div>
-        <div class="col-lg-12">
-          <label for="">Numero de casa</label>
-          <input type="text" class="form-control" id="txtNumeroCasa" placeholder="Ingrese el numero de casa">
-        </div>
-        <div class="col-lg-12">
-          <label for="">Numero de bloque</label>
-          <input type="text" class="form-control" id="txtNumeroBloque" placeholder="Ingrese el numero de bloque">
-        </div>
-        <div class="col-lg-12">
-          <label for="">Cantidad de Vehiculos</label>
-          <input type="text" name="vehiculos" id="txtVehiculo" class="form-control" placeholder="Qty. Vehiculos">
-        </div> -->
+        </form>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="editarInformacionVecino()">Actualizar</button>
+        <button type="button" class="btn btn-primary" id="btnEditarVecino" onclick="editarInformacionVecino()">Actualizar</button>
       </div>
     </div>
   </div>

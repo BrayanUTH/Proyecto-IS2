@@ -3,7 +3,7 @@
 include("databaseconnect.php");
 session_start();
 if (isset($_SESSION['idusuario'])) {
-  header("location: inicio_vecino.php");
+  header("location: inicio.php");
 }
 if (!empty($_POST)) {
   $usuario = $_POST['usuario'];

@@ -217,7 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_vecinos.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/vecino/vista_mantenimiento_vecino.php')">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
                                     Vecinos

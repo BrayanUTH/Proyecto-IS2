@@ -10,7 +10,7 @@
         }
 
         function listarMantenimientoVecino() {
-            $sql = "SELECT * FROM vecinos";
+            $sql = "call SP_LISTAR_VECINOS()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consultaVu = mysqli_fetch_assoc($consulta)) {
@@ -18,7 +18,6 @@
                 }
 
                 return $arreglo;
-                $this->conexion->cerrar();
             }
         }
 
@@ -31,6 +30,42 @@
                 }
 
                 return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function registrarVecino($primerNombre, $segundoNombre, $primerApellido,$aegundoApellido,$fechaNacimiento,$telefonoR,$identidad, $numeroCasa, $numeroBloque,$vehiculo, $username, $password,$rolVecino) {
+            try {
+                $sql = "call SP_REGISTRAR_VECINO('$primerNombre', '$segundoNombre', 
+                '$primerApellido','$aegundoApellido','$fechaNacimiento','$telefonoR',
+                '$identidad', '$numeroCasa', '$numeroBloque','$vehiculo', '$username', 
+                '$password','$rolVecino')"; 
+                if ($consulta = $this->conexion->conexion->query($sql)) {
+                    if ($row = mysqli_fetch_array($consulta)) {
+                        return trim($row[0]);   
+                    }
+                }
+            } catch (Exception $e) {
+                echo "<h3>ModeloVecino::registrarVecino() -> ".$e->getMessage()." </h3";
+            } finally {
+                $this->conexion->cerrar();
+            }
+        }
+
+        function editarVecino($primerNombre, $segundoNombre, $primerApellido,$aegundoApellido,$fechaNacimiento,$telefonoR,$identidad, $numeroCasa, $numeroBloque,$vehiculo, $username, $password,$rolVecino, $txtIdVecino, $txtEstado) {
+            try {
+                $sql = "call SP_EDITAR_VECINO('$txtIdVecino', '$primerNombre', '$segundoNombre', 
+                '$primerApellido','$aegundoApellido','$fechaNacimiento','$telefonoR',
+                '$identidad', '$numeroCasa', '$numeroBloque','$vehiculo', '$username', 
+                '$password','$rolVecino', '$txtEstado')"; 
+                if ($consulta = $this->conexion->conexion->query($sql)) {
+                    if ($row = mysqli_fetch_array($consulta)) {
+                        return trim($row[0]);   
+                    }
+                }
+            } catch (Exception $e) {
+                echo "<h3>ModeloVecino::editarVecino() -> ".$e->getMessage()." </h3";
+            } finally {
                 $this->conexion->cerrar();
             }
         }
