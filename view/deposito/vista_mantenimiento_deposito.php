@@ -45,25 +45,62 @@ if (!isset($_SESSION['idusuario'])) {
           <div class="col-sm-10">
             <select id="cboVecino" class="form-control">
 
-              
+
             </select>
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
-            <button type="button" class="btn btn-success btn-block" onclick="registrarDeposito()" >Aplicar </button>
+            <button type="button" class="btn btn-success btn-block" onclick="registrarDeposito()">Aplicar </button>
           </div>
         </div>
 
       </div>
     </form>
+
+
   </div>
   <!-- </div> -->
 </div>
+
+<hr>
+
+<div class="my-4 mx-5">
+  <table class="table table-bordered table-striped mt-5" id="tablaMantenimientoDeposito">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Vecino</th>
+        <th>Fecha</th>
+        <th>Monto</th>
+        <th>Agencia Bancaria</th>
+        <th>Nº Referencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Detalle de la tabla vecinos -->
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>#</th>
+        <th>Vecino</th>
+        <th>Fecha</th>
+        <th>Monto</th>
+        <th>Agencia Bancaria</th>
+        <th>Nº Referencia</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+
 <script src="js/depositos.js?rev=<?php echo time(); ?>"></script>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     listarComboVecino();
+    listarMantenimientoDeposito();
   });
 </script>

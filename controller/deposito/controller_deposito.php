@@ -4,20 +4,20 @@
 
     $opcion = isset($_REQUEST['opcion']) ? $_REQUEST['opcion'] : "";
     switch ($opcion) {
-        case 'listarVecino':
-            // $consulta = $modeloDeposito->listarMantenimientoVecino();
+        case 'listar':
+            $consulta = $modeloDeposito->listarMantenimientoDeposito();
 
-            // if ($consulta) {
-            //     echo json_encode($consulta);    
-            // } else {
+            if ($consulta) {
+                echo json_encode($consulta);    
+            } else {
                 
-            //     echo '{
-            //         "sEcho": 1, 
-            //         "iTotalRecords": "0", 
-            //         "ITotalDisplayRecords": "0", 
-            //         "aaData": [] 
-            //     }';
-            // }
+                echo '{
+                    "sEcho": 1, 
+                    "iTotalRecords": "0", 
+                    "ITotalDisplayRecords": "0", 
+                    "aaData": [] 
+                }';
+            }
             break;
         case 'registrar':
             $fecha = htmlspecialchars($_POST['fecha'], ENT_QUOTES, 'UTF-8');

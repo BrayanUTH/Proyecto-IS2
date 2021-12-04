@@ -14,7 +14,7 @@ class ModeloDeposito
     function listarMantenimientoDeposito()
     {
         try {
-            $sql = "call SP_LISTAR_VECINOS()";
+            $sql = "call SP_LISTAR_DEPOSITO()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consultaVu = mysqli_fetch_assoc($consulta)) {
