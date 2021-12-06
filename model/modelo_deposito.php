@@ -30,9 +30,9 @@ class ModeloDeposito
         }
     }
 
-    function registrarDeposito($fecha, $monto, $agencia, $numeroReferencia, $vecino) {
+    function registrarDeposito($fecha, $monto, $agencia, $numeroReferencia, $vecino, $cargo) {
         try {
-            $sql = "call SP_REGISTRAR_DEPOSITO('$fecha', '$monto', '$agencia','$numeroReferencia','$vecino')";
+            $sql = "call SP_REGISTRAR_DEPOSITO('$fecha', '$monto', '$agencia','$numeroReferencia','$vecino', '$cargo')";
             if ($this->conexion->conexion->query($sql)) {
                 return 1;
             } else {
@@ -49,6 +49,25 @@ class ModeloDeposito
     {
         try {
             $sql = "call SP_LISTAR_COMBO_VECINO()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consultaVu = mysqli_fetch_assoc($consulta)) {
+                    $arreglo[] = $consultaVu;
+                }
+
+                return $arreglo;
+            }
+        } catch (Exception $e) {
+            echo "<h3>ModeloDeposito::listarComboVecino() -> " . $e->getMessage() . " </h3";
+        } finally {
+            $this->conexion->cerrar();
+        }
+    }
+
+    function listarComboCargo()
+    {
+        try {
+            $sql = "call SP_LISTAR_COMBO_CARGO()";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consultaVu = mysqli_fetch_assoc($consulta)) {

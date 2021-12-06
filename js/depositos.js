@@ -38,6 +38,7 @@ function registrarDeposito() {
     let txtAgencia = $('#txtAgencia').val();
     let txtNumeroReferencia = $('#txtNumeroReferencia').val();
     let cboVecino = $('#cboVecino').val();
+    let cboCargo = $('#cboCargo').val();
 
     if (txtFecha.length == 0 || txtMonto.length == 0 || txtAgencia.length == 0 || txtNumeroReferencia.length == 0 || cboVecino.length == 0) {
         return Swal.fire('Mensaje de advertencia', 'Todos los campos son obligatorios', 'warning');
@@ -52,6 +53,7 @@ function registrarDeposito() {
             agencia: txtAgencia,
             numeroReferencia: txtNumeroReferencia,
             vecino: cboVecino,
+            cargo: cboCargo
         }
     }).done(function (resp) {
         if (resp > 0) {
@@ -80,6 +82,24 @@ function listarComboVecino() {
             document.querySelector('#cboVecino').innerHTML = cadena;
         } else {
             document.querySelector('#cboVecino').innerHTML = "No se encontraron datos";
+        }
+    });
+}
+
+function listarComboCargo() {
+    $.ajax({
+        url: "controller/deposito/controller_deposito.php?opcion=listarComboCargo",
+        type: "POST"
+    }).done(function (resp) {
+        let data = JSON.parse(resp);
+        let cadena = "";
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                cadena += "<option value='" + data[i]['id_cargo'] + "'>" + data[i]['nombre'] + "</option>";
+            }
+            document.querySelector('#cboCargo').innerHTML = cadena;
+        } else {
+            document.querySelector('#cboCargo').innerHTML = "No se encontraron datos";
         }
     });
 }

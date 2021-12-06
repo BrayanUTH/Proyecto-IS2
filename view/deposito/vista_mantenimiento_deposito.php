@@ -50,6 +50,15 @@ if (!isset($_SESSION['idusuario'])) {
           </div>
         </div>
         <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Cargo:</label>
+          <div class="col-sm-10">
+            <select id="cboCargo" class="form-control">
+
+
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
             <button type="button" class="btn btn-success btn-block" onclick="registrarDeposito()">Aplicar </button>
@@ -102,5 +111,6 @@ if (!isset($_SESSION['idusuario'])) {
   $(document).ready(function() {
     listarComboVecino();
     listarMantenimientoDeposito();
+    listarComboCargo();
   });
 </script>
