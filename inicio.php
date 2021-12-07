@@ -192,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'arreglos_pago.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/convenio/vista_mantenimiento_convenio.php')">
                                 <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Convenios de Pagos
