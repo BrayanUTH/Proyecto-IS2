@@ -90,11 +90,12 @@ function listarVecinoParaSeleccionar() {
             },
             {
                 defaultContent:
-                    "<button class='seleccionar btn color-dark-blue'><i class=' fas fa-solid fa-check'></i></button>",
+                    "<button class='seleccionar btn btn-success'><i class='fas fa-plus'></i></button>",
             },
         ],
         fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            $($(nRow).find("td")[5]).css("text-align", "left");
+            $($(nRow).find("td")[2]).css("text-align", "center");
+            $($(nRow).find("td")[3]).css("text-align", "center");
         },
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",

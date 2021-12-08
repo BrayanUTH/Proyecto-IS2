@@ -8,7 +8,7 @@
                         <div class="col-sm-12 mb-4" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
                             <h2 class="text-center">VECINOS - ESTADOS DE CUENTA</h2>
                         </div>
-                        
+
                         <div class="col-sm-6">
                             <label for="">Seleccione el vecino:</label>
                             <div class="input-group mb-3">
@@ -80,83 +80,69 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Seleccione un Vecino</h5>
+                    <h5 class="modal-title">SELECCIONE UN VECINO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <table class="table table-bordered table-striped" id="tablaSeleccionarVecino">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center">Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
 
-                    <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="card">
-                                <div class="card-header color-dark-blue">
-                                    <!-- <h3 class="card-title">Mantenimiento de Usuarios</h3> -->
-                                </div>
-                                <div class="card-body">
-
-                                    <table class="table table-bordered table-striped" id="tablaSeleccionarVecino">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nombre</th>
-                                                <th>Estado</th>
-                                                <th>Seleccionar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                        <tfoot>
-
-                                        </tfoot>
-                                    </table>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- FIN MODAL -->
+    <!-- FIN MODAL -->
 
-        <script src="js/estados_cuenta.js?rev=<?php echo time(); ?>"></script>
+    <script src="js/estados_cuenta.js?rev=<?php echo time(); ?>"></script>
 
-        <script>
-            var fecha = new Date();
-            var year = fecha.getFullYear();
-            var mes = fecha.getMonth() + 1;
-            var dia = fecha.getDate();
+    <script>
+        var fecha = new Date();
+        var year = fecha.getFullYear();
+        var mes = fecha.getMonth() + 1;
+        var dia = fecha.getDate();
 
-            if (dia < 10) {
-                dia = '0' + dia;
+        if (dia < 10) {
+            dia = '0' + dia;
+        }
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        document.querySelector('#txtFechaInicio').value = (year) + '-' + mes + '-' + dia;
+        document.querySelector('#txtFechaFin').value = (year) + '-' + mes + '-' + dia;
+
+
+        $(document).ready(function() {
+            // listarEstadoCuenta();
+            listarVecinoParaSeleccionar();
+        });
+
+        $('#checkFecha').change(function() {
+
+            if ($('#checkFecha').prop('checked')) {
+                document.getElementById('div_fechas').style.display = 'block';
+            } else {
+                document.getElementById('div_fechas').style.display = 'none';
+                document.querySelector('#txtFechaInicio').value = (year) + '-' + mes + '-' + dia;
+                document.querySelector('#txtFechaFin').value = (year) + '-' + mes + '-' + dia;
+
             }
-            if (mes < 10) {
-                mes = '0' + mes;
-            }
-            document.querySelector('#txtFechaInicio').value = (year) + '-' + mes + '-' + dia;
-            document.querySelector('#txtFechaFin').value = (year) + '-' + mes + '-' + dia;
-
-
-            $(document).ready(function() {
-                // listarEstadoCuenta();
-                listarVecinoParaSeleccionar();
-            });
-
-            $('#checkFecha').change(function() {
-
-                if ($('#checkFecha').prop('checked')) {
-                    document.getElementById('div_fechas').style.display = 'block';
-                } else {
-                    document.getElementById('div_fechas').style.display = 'none';
-                    document.querySelector('#txtFechaInicio').value = (year) + '-' + mes + '-' + dia;
-                    document.querySelector('#txtFechaFin').value = (year) + '-' + mes + '-' + dia;
-
-                }
-            });
-        </script>
+        });
+    </script>
