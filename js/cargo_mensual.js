@@ -38,7 +38,7 @@ function listarMantenimientoCargo() {
                     // if (data === "INGRESADO") {
                     if (data === "ACTIVO") {
                         return "<button class='editar btn btn-info'><i class='fas fa-edit'></i></button>" + "&nbsp;" +
-                            "<button class='anular btn color-dark-blue'><i class='fas fa-edit'></i></button>"
+                            "<button class='anular btn btn-warning'><i class='fas fa-edit'></i></button>"
                     } else {
                         return "--";
                     }

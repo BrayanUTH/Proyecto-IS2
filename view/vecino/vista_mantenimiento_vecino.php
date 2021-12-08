@@ -70,7 +70,7 @@ if (!isset($_SESSION['idusuario'])) {
         </button>
       </div>
       <div class="modal-body">
-        <form action="" id="frmRegistrarVecino">
+        <form action="" id="frmRegistrarVecino" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
           <div class="row">
             <div class="col-lg-6 mb-3">
               <label for="">Primer Nombre</label>

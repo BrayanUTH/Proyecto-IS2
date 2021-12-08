@@ -1,26 +1,23 @@
 <div class="content-header">
-    <div class="container-fluid">
+    <div class="container-fluid border p-3 shadow-lg rounded">
         <div class="row mb-2">
             <div class="col-md-12">
                 <div class="ibox ibox-default">
 
                     <div class="row mb-3">
+                        <div class="col-sm-12 mb-4" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
+                            <h2 class="text-center">VECINOS - ESTADOS DE CUENTA</h2>
+                        </div>
+                        
                         <div class="col-sm-6">
-                            <h2 class="m-0">Estados de cuenta de los vecinos</h2>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                        </div>
-
-                        <div class="col-sm-6 text-right">
-                            <div class="form-group">
-                                <label for="">&nbsp;</label>
-                                <input type="text" class="form-control" name="txtNombreVecino" id="txtNombreVecino" placeholder="Nombre del vecino" readonly>
+                            <label for="">Seleccione el vecino:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="txtNombreVecino" id="txtNombreVecino" placeholder="Nombre del vecino" readonly aria-describedby="txtNombreVecino">
                                 <input type="text" class="form-control" name="txtIdVecino" id="txtIdVecino" hidden>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="txtNombreVecino" onclick="abrirModal()"><i class="fa fa-search"></i></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-1" style="margin-left: -10px;">
-                            <label for="">&nbsp;</label><br>
-                            <button type="button" class="btn color-dark-blue" style="width: 100%;" onclick="abrirModal()"> <i class="fa fa-search"></i> </button>
                         </div>
                     </div>
 
@@ -29,10 +26,11 @@
                         <label class="form-check-label" for="checkFecha">Filtrar por fecha de cargo</label>
                     </div>
 
-                    <div class="col-sm-12">
-                        <h5>Cargos totales: <span id="txtcargo" style="color: orange;"></span></h5>
-                        <h5>Depositos realizados: <span id="txtdeposito" style="color: green;"></span></h5>
-                        <h5>Total de deuda: <span id="txttotal" style="color: red;"></span></h5>
+
+                    <div class="col-sm-4 mb-3" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
+                        <h5><b> Cargos totales: L. </b><span id="txtcargo" style="font-weight: 550; color: green;"></span></h5>
+                        <h5><b> Depositos realizados: L. </b><span id="txtdeposito" style="font-weight: 550; color: green;"></span></h5>
+                        <h5><b> Total de deuda: L. </b><span id="txttotal" style="font-weight: 550; color: red;"></span></h5>
                     </div>
 
                     <div id="div_fechas" style="display: none;">
@@ -124,6 +122,7 @@
                 </div>
             </div>
         </div>
+
         <!-- FIN MODAL -->
 
         <script src="js/estados_cuenta.js?rev=<?php echo time(); ?>"></script>

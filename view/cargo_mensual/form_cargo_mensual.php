@@ -1,33 +1,49 @@
 <div class="content-header">
 
-    <div class="card">
-        <div class="card-header color-dark-blue text-light card-title">
-            <p> Cargo Mensual a los vecinos</p>
-        </div>
-        <div class="card-body row justify-content-center">
-            <div class="col-8 ">
+  <div class="container p-4">
+    <div class="card card-secondary">
+      <div class="card-header">
+        <h3 class="card-title">CARGO MENSUAL A LOS VECINOS</h3>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" id="form_cargo" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
+          <div class="card-body">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Fecha del cargo:</label>
+              <div class="col-sm-10">
+                <input type="date" name="fechaCargo" id="fechaCargo" class="form-control">
+              </div>
 
-        <form name="form_cargo" id="form_cargo" method="POST">
-            <div class="form-group"> 
-                <label>Fecha del cargo:</label>
-              <input type="date" name="fechaCargo" id="fechaCargo" class="form-control"  >
             </div>
-            <div class="form-group"> 
-                <label>Monto del cargo:</label>
-              <input type="text" name="montoCargo" id="montoCargo" class="form-control" placeholder="Monto del Cargo" >
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Monto del cargo:</label>
+              <div class="col-sm-10">
+                <input type="text" name="montoCargo" id="montoCargo" class="form-control" placeholder="Monto del Cargo">
+              </div>
+
             </div>
-            <div class="form-group"> 
-                <label>Descripcion:</label>
-              <!-- <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" > -->
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Descripcion:</label>
+              <div class="col-sm-10">
                 <textarea class="form-control" name="descripcion" id="descripcion" rows="3" maxlength="250"></textarea>
-            </div>
-          <input type="button" class="btn color-dark-blue"  value ="Guardar" onclick="guardarCargo()"> 
-        </form>  
+              </div>
 
             </div>
-        </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+              <button type="button" class="btn btn-success btn-block" onclick="guardarCargo()">Aplicar </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
 
     </div>
+  </div>
+
+
 
 </div>
 
@@ -40,7 +56,7 @@
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped" id="tablaMantenimientoCargo">
-            <!-- <caption>DEPOSITOS VECINOS</caption> -->
+          <!-- <caption>DEPOSITOS VECINOS</caption> -->
           <thead>
             <tr>
               <th># Cargos</th>
@@ -50,7 +66,7 @@
               <th>Descripcion</th>
               <th>Estado</th>
               <th>Acciones</th>
-      
+
 
             </tr>
           </thead>
@@ -59,7 +75,7 @@
 
           </tbody>
           <tfoot>
-            
+
           </tfoot>
         </table>
       </div>
@@ -78,37 +94,37 @@
         </button>
       </div>
       <div class="modal-body">
-            <form name="form_editar" id="form_editar" method="POST">
-                <input type="text" name="txtIdCargo" id="txtIdCargoE" class="form-control"  hidden>
-            <div class="form-group"> 
-                <label>Fecha del cargo:</label>
-              <input type="date" name="fechaCargo" id="fechaCargoE" class="form-control"  >
-            </div>
-            <div class="form-group"> 
-                <label>Monto del cargo:</label>
-              <input type="text" name="montoCargo" id="montoCargoE" class="form-control" placeholder="Monto del Cargo" >
-            </div>
-            <div class="form-group"> 
-                <label>Descripcion:</label>
-              <!-- <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" > -->
-                <textarea class="form-control" name="descripcion" id="descripcionE" rows="3" maxlength="250"></textarea>
-            </div>
-        </form>  
-        
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="editarCargo()">Actualizar</button>
+        <form name="form_editar" id="form_editar" method="POST">
+          <input type="text" name="txtIdCargo" id="txtIdCargoE" class="form-control" hidden>
+          <div class="form-group">
+            <label>Fecha del cargo:</label>
+            <input type="date" name="fechaCargo" id="fechaCargoE" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Monto del cargo:</label>
+            <input type="text" name="montoCargo" id="montoCargoE" class="form-control" placeholder="Monto del Cargo">
+          </div>
+          <div class="form-group">
+            <label>Descripcion:</label>
+            <!-- <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" > -->
+            <textarea class="form-control" name="descripcion" id="descripcionE" rows="3" maxlength="250"></textarea>
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="editarCargo()">Actualizar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- FIN MODAL -->
+  <!-- FIN MODAL -->
 
 
- <script src="js/cargo_mensual.js?rev=<?php echo time(); ?>"></script>
+  <script src="js/cargo_mensual.js?rev=<?php echo time(); ?>"></script>
 
-<script>
-  $(document).ready(function() {
-    listarMantenimientoCargo();
-  });
-</script>
+  <script>
+    $(document).ready(function() {
+      listarMantenimientoCargo();
+    });
+  </script>

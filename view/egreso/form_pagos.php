@@ -1,12 +1,12 @@
 <div class="content-header">
 
-    <div class="card">
-        <div class="card-header color-dark-blue text-light card-title">
-            Ingresar un Egreso o Gasto
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">Ingresar Un Egreso o Gasto</h3>            
         </div>
         <div class="card-body row justify-content-center">
             <div class="col-8 ">
-                <form id="form_pago" name="form_pago">
+                <form id="form_pago" name="form_pago" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
                     <div class="form-group">
                         <label>Fecha del Pago</label>
                         <input type="date" name="fechaPago" id="fechaPago" class="form-control" autofocus>
@@ -28,7 +28,7 @@
                         <label for="">Descripcion del gasto:</label>
                         <textarea class="form-control" name="descripcion" id="descripcion" rows="3" maxlength="100" placeholder=""></textarea>
                     </div>
-                    <button type="button" class="btn color-dark-blue " onclick="guardarPago()">Guardar</button>
+                    <button type="button" class="btn btn-success px-5" onclick="guardarPago()">Guardar</button>
                 </form>
             </div>
         </div>
@@ -39,8 +39,8 @@
 
 <div class="content-header">
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-header color-dark-blue">
+        <div class="card card-secondary">
+            <div class="card-header">
                 <h3 class="card-title">Mantenimiento informacion de pagos</h3>
             </div>
             <div class="card-body">
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="form_pago" name="form_pago">
+                <form id="form_pago" name="form_pago" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
                     <input type="text" name="txtIdPago" id="txtIdPagoE" hidden>
                     <div class="form-group">
                         <label>Fecha del Pago</label>

@@ -25,7 +25,7 @@ function listarMantenimientoPago() {
 
       {
         defaultContent:
-          "<button class='editar btn color-dark-blue'><i class='fas fa-edit'></i></button>",
+          "<button class='editar btn btn-warning'><i class='fas fa-edit'></i></button>",
       },
     ],
     fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

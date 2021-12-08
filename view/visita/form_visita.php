@@ -7,14 +7,13 @@ $iduser = $_SESSION['idusuario'];
 
 <div class="content-header">
 
-    <div class="card">
-        <div class="card-header color-dark-blue text-light card-title">
-            <p> Anunciar una visita</p>
-            <small>Apreciado vecino(a) debe enviar un registro por cada persona que le visita</small>
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">ANUNCIAR VISITA - Apreciado vecino(a) debe enviar un registro por cada persona que le visita</h3>
         </div>
         <div class="card-body row justify-content-center">
             <div class="col-8 ">
-                <form method="POST" id="form_visita">
+                <form method="POST" id="form_visita" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
                     <input type="hidden" name="txtidVecino" id="txtidVecino" value="<?php echo $iduser;?>">
                     <div class="form-group">
                         <label>Primer nombre de la visita:</label>
@@ -45,7 +44,7 @@ $iduser = $_SESSION['idusuario'];
                         <input name="txtCedula" id="txtCedula" class="form-control" placeholder="#### #### #####" >
                         </input>
                     </div>
-                    <button type="button" class="btn color-dark-blue" onclick="guardarVisita();">Guardar</button>
+                    <button type="button" class="btn btn-success px-5" onclick="guardarVisita();">Guardar</button>
                 </form>
             </div>
         </div>
@@ -58,9 +57,9 @@ $iduser = $_SESSION['idusuario'];
 
 <div class="content-header">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-header color-dark-blue">
-        <h3 class="card-title">Mantenimiento visitas de los vecinos</h3>
+    <div class="card card-secondary">
+      <div class="card-header">
+        <h3 class="card-title">MANTENIMIENTO VISITAS DE LOS VECINOS</h3>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped" id="tablaMantenimientoVisita">
@@ -93,9 +92,9 @@ $iduser = $_SESSION['idusuario'];
 
 <div class="content-header">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-header color-dark-blue">
-        <h3 class="card-title">Mis visitas</h3>
+    <div class="card card-secondary">
+      <div class="card-header">
+        <h3 class="card-title">MIS VISITAS AGENDADAS</h3>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped" id="tablaMantenimientoVisitaUsuario">

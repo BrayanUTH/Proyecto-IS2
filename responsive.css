@@ -14,7 +14,7 @@
 
 .card-body {
 	box-shadow: 0 0 20px 7px rgba(0,0,0,0.1);
-	
+	background-color: rgba(163, 168, 172, 0.507);
 }
 
 .card{

@@ -39,7 +39,7 @@ function listarMantenimientoVisita() {
                 render: function (data, type, row) {
                     if (data === "INICIADO") {
                         return "<button class='imprimir btn btn-info'><i class='fas fa-edit'></i></button>" + "&nbsp;" +
-                            "<button class='anular btn color-dark-blue'><i class='fas fa-edit'></i></button>"
+                            "<button class='anular btn btn-warning'><i class='fas fa-edit'></i></button>"
                     } else {
                         return "--";
                     }
@@ -97,7 +97,7 @@ function listarMantenimientoVisitaUsuario() {
                 render: function (data, type, row) {
                     if (data === "INICIADO") {
                         return "<button class='imprimir btn btn-info'><i class='fas fa-edit'></i></button>" + "&nbsp;" +
-                            "<button class='anular btn color-dark-blue'><i class='fas fa-edit'></i></button>"
+                            "<button class='anular btn btn-warning'><i class='fas fa-edit'></i></button>"
                     } else {
                         return "--";
                     }
