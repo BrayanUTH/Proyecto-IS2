@@ -23,12 +23,18 @@ if (!isset($_SESSION['idusuario'])) {
           </div>
         </div> -->
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Monto Inicial:</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Cargo:</label>
           <div class="col-sm-10">
-            <select id="cboMonto" class="form-control">
+            <select id="cboCargo" class="form-control">
 
 
             </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Monto Inicial:</label>
+          <div class="col-sm-10">
+            <input type="text"  id="txtMonto" class="form-control" >
           </div>
         </div>
         <div class="form-group row">

@@ -105,7 +105,8 @@ function listarComboCargo() {
             for (let i = 0; i < data.length; i++) {
                 cadena += "<option value='" + data[i]['id_cargo'] + "'>" + data[i]['nombre'] + "</option>";
             }
-            document.querySelector('#cboMonto').innerHTML = cadena;
+            document.querySelector('#cboCargo').innerHTML = cadena;
+           
         } else {
             document.querySelector('#cboMonto').innerHTML = "No se encontraron datos";
         }
