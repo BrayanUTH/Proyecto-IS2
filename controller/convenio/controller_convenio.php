@@ -6,7 +6,7 @@
     switch ($opcion) {
         case 'listar':
             $consulta = $modeloConvenio->listarMantenimientoConvenio();
-
+            
             if ($consulta) {
                 echo json_encode($consulta);    
             } else {
@@ -20,13 +20,16 @@
             }
             break;
         case 'registrar':
-            $fecha = htmlspecialchars($_POST['fecha'], ENT_QUOTES, 'UTF-8');
             $monto = htmlspecialchars($_POST['monto'], ENT_QUOTES, 'UTF-8');
-            $agencia = htmlspecialchars($_POST['agencia'], ENT_QUOTES, 'UTF-8');
-            $numeroReferencia = htmlspecialchars($_POST['numeroReferencia'], ENT_QUOTES, 'UTF-8');
+            $prima= htmlspecialchars($_POST['prima'], ENT_QUOTES, 'UTF-8');
+            $descuento = htmlspecialchars($_POST['descuento'], ENT_QUOTES, 'UTF-8');
+            $saldo = htmlspecialchars($_POST['saldo'], ENT_QUOTES, 'UTF-8');
+            $cuota = htmlspecialchars($_POST['cuota'], ENT_QUOTES, 'UTF-8');
+            $detalle = htmlspecialchars($_POST['detalle'], ENT_QUOTES, 'UTF-8');
+            $fechaultimo =htmlspecialchars($_POST['fechaultimo'], ENT_QUOTES, 'UTF-8');
             $vecino = htmlspecialchars($_POST['vecino'], ENT_QUOTES, 'UTF-8');
 
-            $consulta = $modeloDeposito->registrarDeposito($fecha, $monto, $agencia,$numeroReferencia,$vecino);
+            $consulta = $modeloConvenio->registrarConvenio($monto, $prima,$descuento,$saldo,$cuota,$detalle,$fechaultimo,$vecino);
             echo $consulta;
             break;
         case 'listarComboVecino':

@@ -10,7 +10,7 @@
         }
 
         function listarMantenimientoConvenio() {
-            $sql = "call SP_LISTAR_CONVENIO()";
+            $sql = "call SP_LISTAR_CONVENIO()";          
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consultaVu = mysqli_fetch_assoc($consulta)) {
@@ -52,7 +52,7 @@
             }
         }
 
-        function registrarVecino($primerNombre, $segundoNombre, $primerApellido,$aegundoApellido,$fechaNacimiento,$telefonoR,$identidad, $numeroCasa, $numeroBloque,$vehiculo, $username, $password,$rolVecino) {
+        function registrarConvenio() {
             try {
                 $sql = "call SP_REGISTRAR_VECINO('$primerNombre', '$segundoNombre', 
                 '$primerApellido','$aegundoApellido','$fechaNacimiento','$telefonoR',

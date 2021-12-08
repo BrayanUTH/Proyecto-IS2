@@ -14,18 +14,18 @@ if (!isset($_SESSION['idusuario'])) {
       <h3 class="card-title">Registrar Convenio</h3>
     </div>
 
-    <form class="form-horizontal" id="frmRegistroDeposito">
+    <form class="form-horizontal" id="frmRegistroConvenio">
       <div class="card-body">
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>
           <div class="col-sm-10">
             <input type="date" id="txtFecha" class="form-control" autofocus>
           </div>
-        </div>
+        </div> -->
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Monto Inicial:</label>
           <div class="col-sm-10">
-            <select id="cboCargo" class="form-control">
+            <select id="cboMonto" class="form-control">
 
 
             </select>
@@ -77,9 +77,18 @@ if (!isset($_SESSION['idusuario'])) {
           </div>
         </div>
         <div class="form-group row">
+          <label for="inputEmail13" class="col-sm-2 col-form-label">ESTADO:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="txtEstado">
+                <option value="ACTIVO">Activo</option>
+                <option value="INACTIVO">Inactivo</option>
+              </select>
+            </div>
+          </div>
+        <div class="form-group row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
-            <button type="button" class="btn btn-success btn-block" onclick="registrarDeposito()">Aplicar </button>
+            <button type="button" class="btn btn-success btn-block" onclick="registrarConvenio()">Aplicar </button>
           </div>
         </div>
 

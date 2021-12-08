@@ -18,6 +18,7 @@ function listarMantenimientoConvenio() {
       "url": "controller/convenio/controller_convenio.php?opcion=listar",
     },
     "columns": [
+      { "data": "id_convenio" },
       { "data": "fecha_inicio" },
       { "data": "monto_inicial" },
       { "data": "prima" },
@@ -25,7 +26,7 @@ function listarMantenimientoConvenio() {
       { "data": "saldo_restante" },
       { "data": "cuotas" },
       { "data": "fecha_ultimo_pago" },
-      { "data": "id_vecino" },
+      { "data": "nombre_vecino" },
     ],
     "language": {
       "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
@@ -35,31 +36,38 @@ function listarMantenimientoConvenio() {
 }
 
 function registrarConvenio() {
-    let txtFecha = $('#txtFecha').val();
-    let txtMonto = $('#txtMonto').val();
-    let txtAgencia = $('#txtAgencia').val();
-    let txtNumeroReferencia = $('#txtNumeroReferencia').val();
+    let cmbMonto = $('#cboMonto').val();
+    let txtPrima = $('#txtPrima').val();
+    let txtDescuento = $('#txtDescuento').val();
+    let txtSaldo = $('#txtSaldo').val();
+    let txtCuota = $('#txtCuota').val();
+    let txtDetalle = $('#txtDetalles').val();
+    let txtFechaUltimo = $('#txtFechaUltimo').val();
     let cboVecino = $('#cboVecino').val();
 
-    if (txtFecha.length == 0 || txtMonto.length == 0 || txtAgencia.length == 0 || txtNumeroReferencia.length == 0 || cboVecino.length == 0) {
+    if (cmbMonto.length == 0 || txtPrima.length == 0 || txtDescuento.length == 0 || txtSaldo.length == 0 || txtCuota.length == 0 || txtDetalle.length == 0 ||
+         txtFechaUltimo.length == 0 ||cboVecino.length == 0) {
         return Swal.fire('Mensaje de advertencia', 'Todos los campos son obligatorios', 'warning');
     }
 
     $.ajax({
-        url: 'controller/deposito/controller_deposito.php?opcion=registrar',
+        url: 'controller/convenio/controller_convenio.php?opcion=registrar',
         type: 'POST',
         data: {
-            fecha: txtFecha,
-            monto: txtMonto,
-            agencia: txtAgencia,
-            numeroReferencia: txtNumeroReferencia,
+            monto: cmbMonto,
+            prima: txtPrima,
+            descuento: txtDescuento,
+            saldo: txtSaldo,
+            cuota: txtCuota,
+            detalle: txtDetalle,
+            fechaultimo: txtFechaUltimo,
             vecino: cboVecino,
         }
     }).done(function (resp) {
         if (resp > 0) {
             if (resp == 1) {
-                tablaMantenimientoDeposito.ajax.reload();
-                document.getElementById('frmRegistroDeposito').reset();
+                tablaMantenimientoConvenio.ajax.reload();
+                document.getElementById('frmRegistroConvenio').reset();
                 Swal.fire('Mensaje de confirmacion', 'Datos guardados correctamente', 'success');
             }
         } else {
@@ -97,9 +105,9 @@ function listarComboCargo() {
             for (let i = 0; i < data.length; i++) {
                 cadena += "<option value='" + data[i]['id_cargo'] + "'>" + data[i]['nombre'] + "</option>";
             }
-            document.querySelector('#cboCargo').innerHTML = cadena;
+            document.querySelector('#cboMonto').innerHTML = cadena;
         } else {
-            document.querySelector('#cboCargo').innerHTML = "No se encontraron datos";
+            document.querySelector('#cboMonto').innerHTML = "No se encontraron datos";
         }
     });
 }
