@@ -9,8 +9,8 @@
             $this->conexion->conectar();
         }
 
-        function listarEstadoCuenta() {
-            $sql = "SELECT id_vecino, Nombre, Casa, Bloque, vehiculos, id_anterior FROM vecinos";
+        function listarEstadoCuenta($idVecino, $fechaInicio, $fechaFin) {
+            $sql = "call SP_LISTAR_DETALLE_CUENTA('$idVecino', '$fechaInicio', '$fechaFin')";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 while ($consultaVu = mysqli_fetch_assoc($consulta)) {
@@ -21,19 +21,5 @@
                 $this->conexion->cerrar();
             }
         }
-
-        function listarEstadoCuentaVecino($id) {
-            $sql = "SELECT id_vecino, Nombre, Casa, Bloque, vehiculos, id_anterior FROM vecinos WHERE id_vecino = '$id' ";
-            $arreglo = array();
-            if ($consulta = $this->conexion->conexion->query($sql)) {
-                while ($consultaVu = mysqli_fetch_assoc($consulta)) {
-                    $arreglo["data"][] = $consultaVu;
-                }
-
-                return $arreglo;
-                $this->conexion->cerrar();
-            }
-        }
-
     }
 ?>

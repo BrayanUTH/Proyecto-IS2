@@ -1,10 +1,9 @@
 <?php
 
-    require '../model/modelo_estado_cuenta.php';
+    require '../../model/modelo_pago.php';
 
-    $mec = new ModeloEstadoCuenta();
-    $id = htmlspecialchars($_POST['idUsuario'], ENT_QUOTES, 'UTF-8');
-    $consulta = $mec->listarEstadoCuentaVecino($id);
+    $mec = new ModeloPago();
+    $consulta = $mec->listarPago();
     if ($consulta) {
         echo json_encode($consulta);
     } else {

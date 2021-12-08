@@ -1,7 +1,5 @@
 <?php
-include('databaseconnect.php');
 session_start();
-
 if (!isset($_SESSION['idusuario'])) {
   header("location: index.php");
 }
@@ -43,6 +41,6 @@ if (!isset($_SESSION['idusuario'])) {
 <script src="js/vecino.js?rev=<?php echo time(); ?>"></script>
 <script>
   $(document).ready(function() {
-    listarEstatusGeneralVecino();
+    // listarEstatusGeneralVecino();
   });
 </script>

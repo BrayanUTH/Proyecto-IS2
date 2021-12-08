@@ -175,7 +175,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'estados_cuenta.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/vecino/estados_cuenta.php')">
                                 <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                 <p>
                                     Estados de Cuenta
@@ -184,7 +184,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'cuentas_a_pagar.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/egreso/form_pagos.php')">
                                 <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>
                                     Registro de Pagos
@@ -192,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'arreglos_pago.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/convenio/form_arreglos_pago.php')">
                                 <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Convenios de Pagos
@@ -200,15 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'mantenimiento_trx.php')">
-                                <i class="nav-icon fas fa-hand-holding-usd"></i>
-                                <p>
-                                    Transacciones
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'rutina_cargo.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/cargo_mensual/form_cargo_mensual.php')">
                                 <i class="nav-icon fas fa-comment-dollar"></i>
                                 <p>
                                     Rutina de Cargo Mensual
@@ -224,20 +216,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'status_general_vecinos.php')">
-                                <i class="nav-icon fas fa-file-signature"></i>
-                                <p>
-                                    Reportes Varios
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'registro_visitas.php')">
+                            <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'view/visita/form_visita.php')">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Registro de Visitas
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link color-blue-contrast">
+                                <i class="nav-icon fas fa-folder-open"></i>
+                                <p>
+                                    Reportes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'status_general_vecinos.php')">
+                                        <i class="nav-icon fas fa-users-cog"></i>
+                                        <p>
+                                            Reportes Varios
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

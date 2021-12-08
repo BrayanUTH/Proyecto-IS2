@@ -1,9 +1,9 @@
 <?php
 
-    require '../model/modelo_estado_cuenta.php';
+    require '../../model/modelo_vecino.php';
 
-    $mec = new ModeloEstadoCuenta();
-    $consulta = $mec->listarEstadoCuenta();
+    $mec = new ModeloVecino();
+    $consulta = $mec->listarMantenimientoVecino();
     if ($consulta) {
         echo json_encode($consulta);
     } else {
