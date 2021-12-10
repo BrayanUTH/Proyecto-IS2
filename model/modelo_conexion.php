@@ -7,10 +7,10 @@
         public $conexion;
 
         public function __construct() {
-            $this->servidor = "156.67.74.151";
-            $this->usuario = "u357103333_user1";
-            $this->contrasena = "Residencial97!";
-            $this->basedatos = "u357103333_residencial";
+            $this->servidor = "localhost";
+            $this->usuario = "root";
+            $this->contrasena = "";
+            $this->basedatos = "residencial";
         }
 
         function conectar() {
