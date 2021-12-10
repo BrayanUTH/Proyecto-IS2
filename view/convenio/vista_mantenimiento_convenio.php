@@ -14,7 +14,7 @@ if (!isset($_SESSION['idusuario'])) {
       <h3 class="card-title">Registrar Convenio</h3>
     </div>
 
-    <form class="form-horizontal" id="frmRegistroConvenio">
+    <form class="form-horizontal" id="frmRegistroConvenio" name="frm">
       <div class="card-body">
         <!-- <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha:</label>

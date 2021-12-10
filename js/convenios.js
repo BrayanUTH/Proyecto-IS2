@@ -53,7 +53,6 @@ $('#tablaMantenimientoConvenio').on('click', '.editar', function () {
       var data = tablaMantenimientoConvenio.row(this).data();
     }
     loadData(data);
-
     $('#btnAgregar').hide();
     $('#btnEditar').show();
   });
