@@ -55,7 +55,7 @@
             $idConvenio=htmlspecialchars($_POST['idConvenio'], ENT_QUOTES, 'UTF-8');
             $vecino = htmlspecialchars($_POST['vecino'], ENT_QUOTES, 'UTF-8');
 
-            $consulta = $modeloDeposito->editarConvenio($idConvenio,$cargo,$monto, $prima,$descuento,$saldo,$cuota,$detalle,$fechaultimo,$estado,$vecino);
+            $consulta = $modeloConvenio->editarConvenio($idConvenio,$cargo,$monto, $prima,$descuento,$saldo,$cuota,$detalle,$fechaultimo,$estado,$vecino);
             echo $consulta;
             break;
         default:
