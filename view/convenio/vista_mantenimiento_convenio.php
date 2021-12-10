@@ -31,28 +31,34 @@ if (!isset($_SESSION['idusuario'])) {
             </select>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Monto Inicial:</label>
-          <div class="col-sm-10">
-            <input type="text"  id="txtMonto" class="form-control" >
+        
+          <div class="form-group row">
+            <label for="inputEmail3" class="monto col-sm-2 col-form-label" >Monto Inicial:</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" id="txtMonto" class="form-control" placeholder="00.00" readonly>
+              <input type="hidden" id="txtIdConvenio">
+            </div>
+          </div>
+          <div class="losInput">
+          <div class="form-group row">
+            <label for="inputEmail3" class="monto col-sm-2 col-form-label" >Prima:</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" id="txtPrima" class="form-control" placeholder="00.00" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="monto col-sm-2 col-form-label" >Descuento:</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" id="txtDescuento" class="form-control" placeholder="00.00" >
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Prima:</label>
-          <div class="col-sm-10">
-            <input type="number" min="1" id="txtPrima" class="form-control" placeholder="00.00">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Descuento:</label>
-          <div class="col-sm-10">
-            <input type="number" min="1" id="txtDescuento" class="form-control" placeholder="00.00">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Saldo:</label>
-          <div class="col-sm-10">
-            <input type="number" min="1" id="txtSaldo" class="form-control" placeholder="00.00">
+        <div class="inputTotal">
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label" >Saldo:</label>
+            <div class="col-sm-10">
+              <input type="number" min="1" id="txtSaldo" class="form-control" placeholder="00.00" readonly>
+            </div>
           </div>
         </div>
         <div class="form-group row">
@@ -85,16 +91,17 @@ if (!isset($_SESSION['idusuario'])) {
         <div class="form-group row">
           <label for="inputEmail13" class="col-sm-2 col-form-label">ESTADO:</label>
             <div class="col-sm-10">
-              <select class="form-control" id="txtEstado">
-                <option value="ACTIVO">Activo</option>
-                <option value="INACTIVO">Inactivo</option>
+              <select class="form-control" id="cboEstado">
+                <option value="Pendiente">Pendiente</option>
+                <option value="Cancelado">Cancelado</option>
               </select>
             </div>
           </div>
         <div class="form-group row">
           <div class="col-sm-2"></div>
           <div class="col-sm-10">
-            <button type="button" class="btn btn-success btn-block" onclick="registrarConvenio()">Aplicar </button>
+            <button type="button" class="btn btn-success btn-block" onclick="registrarConvenio()" id="btnAgregar">Aplicar </button>
+            <button type="button" class="btn btn-success btn-block" onclick="editarConvenio()" id="btnEditar">Aplicar </button>
           </div>
         </div>
 
@@ -121,6 +128,7 @@ if (!isset($_SESSION['idusuario'])) {
         <th>Cuotas</th>
         <th>Fecha Ultimo Pago</th>
         <th>Vecino</th>
+        <th>Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -138,6 +146,7 @@ if (!isset($_SESSION['idusuario'])) {
         <th>Cuotas</th>
         <th>Fecha Ultimo Pago</th>
         <th>Vecino</th>
+        <th>Acción</th>
       </tr>
     </tfoot>
   </table>
