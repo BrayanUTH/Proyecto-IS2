@@ -343,14 +343,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="plantilla/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="plantilla/plugins/datatables-select/js/dataTables.select.min.js"></script>
 
+    <!-- CHART JS -->
+    <script src="plantilla/plugins/chart.js/Chart.min.js"></script>
+
     <!-- SWALALERT -->
     <script src="plantilla/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="js/app.js?rev=<?php echo time(); ?>"></script>
+
 
     <script>
         function cargarContenido(id, archivo) {
             $("#" + id).load(archivo);
         }
+
+        $(document).ready(function () {
+            printGrafics();
+        });
     </script>
 </body>
 

@@ -11,7 +11,7 @@
  Target Server Version : 100420
  File Encoding         : 65001
 
- Date: 10/12/2021 16:10:30
+ Date: 10/12/2021 16:31:14
 */
 
 SET NAMES utf8mb4;
@@ -502,6 +502,19 @@ BEGIN
 		UPDATE visita SET visita.status_visita = "ANULADO" WHERE visita.id_visita = ID;
         SELECT 1;
 END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for SP_CANTIDAD_VISITAS_POR_MES
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_CANTIDAD_VISITAS_POR_MES`;
+delimiter ;;
+CREATE PROCEDURE `SP_CANTIDAD_VISITAS_POR_MES`()
+SELECT MONTHNAME(fecha_visita) NOMBRE_MES, COUNT(id_visita) CANTIDAD
+	FROM visita 
+WHERE YEAR(fecha_visita) = YEAR(CURDATE()) AND status_visita = 'INGRESO'
+GROUP BY NOMBRE_MES
 ;;
 delimiter ;
 

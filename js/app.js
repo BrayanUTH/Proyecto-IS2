@@ -1,5 +1,5 @@
 function printGrafics() {
-
+    cantidadVisitasPorMes();
 }
 
 
@@ -10,10 +10,10 @@ function cantidadVisitasPorMes() {
     $.ajax({
         url: 'controller/reportes/controller_reporte.php?opcion=countVisitByMonth',
         type: 'POST',
-        data: {
-            fechaInicio: fechaInicio,
-            fechaFin: fechaFin
-        }
+        // data: {
+        //     fechaInicio: fechaInicio,
+        //     fechaFin: fechaFin
+        // }
     }).done(function (resp) {
         arregloReportes = JSON.parse(resp);
         // top10ServiciosMasSolicitados(arregloReportes[1]);
@@ -28,17 +28,17 @@ function cantidadVisitasPorMes() {
                 meses = [...meses, data[i][0]];
                 cantidad = [...cantidad, data[i][1]];
             }
-            var ctx = document.getElementById('canvasMesesMasVentas').getContext('2d');
-            if (chartMesesMasVentas) {
-                chartMesesMasVentas.reset();
-                chartMesesMasVentas.destroy();
+            var ctx = document.getElementById('countVisitByMonth').getContext('2d');
+            if (countVisitByMonth) {
+                countVisitByMonth.reset();
+                countVisitByMonth.destroy();
             }
-            chartMesesMasVentas = new Chart(ctx, {
+            countVisitByMonth = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: meses,
                     datasets: [{
-                        label: 'Meses con mas ventas',
+                        label: 'Cantidad de visitas por mes!',
                         data: cantidad,
                         borderColor: 'rgb(75, 192, 192)',
                         fill: false,
@@ -48,17 +48,17 @@ function cantidadVisitasPorMes() {
                 options: {}
             });
         } else {
-            var ctx = document.getElementById('canvasMesesMasVentas').getContext('2d');
-            if (chartMesesMasVentas) {
-                chartMesesMasVentas.reset();
-                chartMesesMasVentas.destroy();
+            var ctx = document.getElementById('countVisitByMonth').getContext('2d');
+            if (countVisitByMonth) {
+                countVisitByMonth.reset();
+                countVisitByMonth.destroy();
             }
-            chartMesesMasVentas = new Chart(ctx, {
+            countVisitByMonth = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ['SIN RESULTADOS.'],
                     datasets: [{
-                        label: 'Meses con mas ventas',
+                        label: 'Cantidad de visitas por mes!',
                         data: [0],
                         borderColor: 'rgb(75, 192, 192)',
                         fill: false,
