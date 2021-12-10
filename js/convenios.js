@@ -28,7 +28,7 @@ function listarMantenimientoConvenio() {
       { "data": "fecha_ultimo_pago" },
       { "data": "nombre_vecino" },
      
-    { "defaultContent": "<button class='editar btn btn-primary'><i class='fa fa-edit'></i></button>&nbsp;<button class='btnVerVecino btn btn-warning'><i class='fa fas fa-eye'></i></button>" },
+    { "defaultContent": "<button class='editar btn btn-primary'><i class='fa fa-edit'></i></button>&nbsp;<button class='btnVer btn btn-warning'><i class='fa fas fa-eye'></i></button>" },
   
     ],
     "fnRowCallback": function (nRow) {
@@ -55,6 +55,17 @@ $('#tablaMantenimientoConvenio').on('click', '.editar', function () {
     loadData(data);
     $('#btnAgregar').hide();
     $('#btnEditar').show();
+  });
+
+  $('#tablaMantenimientoConvenio').on('click', '.btnVer', function () {
+    var data = tablaMantenimientoConvenio.row($(this).parents('tr')).data(); //Detecta a que fila hago click y me captura los datos en la variable data
+  
+    if (tablaMantenimientoConvenio.row(this).child.isShown()) { //Cuando esta en tamaño responsivo
+      var data = tablaMantenimientoConvenio.row(this).data();
+    }
+    loadData(data);
+    $('#btnAgregar').hide();
+    $('#btnEditar').hide();
   });
 
   function loadData(data) {
