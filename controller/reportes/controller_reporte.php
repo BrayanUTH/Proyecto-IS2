@@ -21,6 +21,22 @@
 
             echo json_encode($arregloGeneral);
             break;
+            case 'mayorCountVecino':
+                $arrayCantVisitasVecino = $modeloReporte-> vecinoMayorVisitas();
+                $arregloGeneral = array();
+    
+                array_push($arregloGeneral, $arrayCantVisitasVecino);
+    
+                echo json_encode($arregloGeneral);
+            break;
+            case 'menorCountVecino':
+                $arrayCantVisitasVecino2 = $modeloReporte-> vecinoMenorVisitas();
+                $arregloGeneral = array();
+    
+                array_push($arregloGeneral, $arrayCantVisitasVecino2);
+    
+                echo json_encode($arregloGeneral);
+            break;
         default:
             # code...
             break;

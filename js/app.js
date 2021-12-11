@@ -1,5 +1,7 @@
 function printGrafics() {
     cantidadVisitasPorMes();
+    vecinoMayorVisitas();
+    vecinoMenorVisitas();
 }
 
 
@@ -299,6 +301,140 @@ function conveniosByMonth(data) {
     }
 
 }
+
+var mayorCountVecino;
+//var arregloReportes1 = [];
+function vecinoMayorVisitas() {
+    $.ajax({
+        url: 'controller/reportes/controller_reporte.php?opcion=mayorCountVecino',
+        type: 'POST',
+
+    }).done(function (resp) {
+        arregloReportes = JSON.parse(resp);
+        
+        let data = arregloReportes[0];
+        
+        if (data.length > 0) {
+            let nombre = [];
+            let cantidad = [];
+            let color = [];
+            for (let i = 0; i < data.length; i++) {
+                nombre = [...nombre, data[i][0]];
+                cantidad = [...cantidad, data[i][1]];
+                color = [...color, colorRGB()];
+            }
+            
+            var ctx = document.getElementById('mayorCountVecino').getContext('2d');
+            if (mayorCountVecino) {
+                mayorCountVecino.reset();
+                mayorCountVecino.destroy();
+            }
+            mayorCountVecino = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nombre,
+                    datasets: [{
+                        label: 'Top 5, Vecinos con mayores visitas',
+                        data: cantidad,
+                        backgroundColor: color,
+                        borderColor: color,
+                        borderWidth: 1
+                    }]
+                },
+                options: {}
+            });
+        } else {
+            var ctx = document.getElementById('mayorCountVecino').getContext('2d');
+            if (mayorCountVecino) {
+                mayorCountVecino.reset();
+                mayorCountVecino.destroy();
+            }
+            mayorCountVecino = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['SIN RESULTADOS.'],
+                    datasets: [{
+                        label: 'Top 5, Vecinos con mayores visitas',
+                        data: [0],
+                        borderColor: 'rgb(75, 192, 192)',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {}
+    
+            });
+        }
+    });
+}
+
+var menorCountVecino;
+//var arregloReportes1 = [];
+function vecinoMenorVisitas() {
+    $.ajax({
+        url: 'controller/reportes/controller_reporte.php?opcion=menorCountVecino',
+        type: 'POST',
+
+    }).done(function (resp) {
+        arregloReportes = JSON.parse(resp);
+        
+        let data = arregloReportes[0];
+        
+        if (data.length > 0) {
+            let nombre = [];
+            let cantidad = [];
+            let color = [];
+            for (let i = 0; i < data.length; i++) {
+                nombre = [...nombre, data[i][0]];
+                cantidad = [...cantidad, data[i][1]];
+                color = [...color, colorRGB()];
+            }
+            
+            var ctx = document.getElementById('menorCountVecino').getContext('2d');
+            
+            if (menorCountVecino) {
+                menorCountVecino.reset();
+                menorCountVecino.destroy();
+            }
+            menorCountVecino = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: nombre,
+                    datasets: [{
+                        label: 'Top 5, Vecinos con menos visitas',
+                        data: cantidad,
+                        backgroundColor: color,
+                        borderColor: color,
+                        borderWidth: 1
+                    }]
+                },
+                options: {}
+            });
+        } else {
+            var ctx = document.getElementById('menorCountVecino').getContext('2d');
+            if (menorCountVecino) {
+                menorCountVecino.reset();
+                menorCountVecino.destroy();
+            }
+            menorCountVecino = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['SIN RESULTADOS.'],
+                    datasets: [{
+                        label: 'Top 5, Vecinos con mayores visitas',
+                        data: [0],
+                        borderColor: 'rgb(75, 192, 192)',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {}
+    
+            });
+        }
+    });
+}
+
 
 function generarNumero(numero) {
     return (Math.random() * numero).toFixed(0);

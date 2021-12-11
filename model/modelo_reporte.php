@@ -102,4 +102,41 @@ class ModeloReporte
             $this->conexion->cerrar();
         }
     }
+    function vecinoMayorVisitas()
+    {
+        try {
+            $sql = "call SP_VECINO_MAYORES_VISITAS()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consultaVu = mysqli_fetch_array($consulta)) {
+                    $arreglo[] = $consultaVu;
+                }
+
+                return $arreglo;
+            }
+        } catch (Exception $e) {
+            echo "<h3>ModeloProducto::vecinoMayorVisitas() -> " . $e->getMessage() . " </h3";
+        } finally {
+            $this->conexion->cerrar();
+        }
+    }
+
+    function vecinoMenorVisitas()
+    {
+        try {
+            $sql = "call SP_VECINO_MENORES_VISITAS()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while ($consultaVu = mysqli_fetch_array($consulta)) {
+                    $arreglo[] = $consultaVu;
+                }
+
+                return $arreglo;
+            }
+        } catch (Exception $e) {
+            echo "<h3>modelo_reporte::vecinoMenorVisitas()-> " . $e->getMessage() . " </h3";
+        } finally {
+            $this->conexion->cerrar();
+        }
+    }
 }

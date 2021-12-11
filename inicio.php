@@ -373,6 +373,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                         </div>
+
+                        
+                        <div class="col-lg-6">
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Top 5 Vecinos con mas visitas</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                <canvas id="mayorCountVecino" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Top 5 Vecinos con menos visitas</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                <canvas id="menorCountVecino" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <canvas id="countVisitByMonth" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                        </div>
                     </div>
 
                     <!-- </div> -->
