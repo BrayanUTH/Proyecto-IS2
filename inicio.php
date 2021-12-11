@@ -223,7 +223,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link color-blue-contrast">
                                 <i class="nav-icon fas fa-folder-open"></i>
                                 <p>
@@ -241,7 +241,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -280,10 +280,98 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="card-body"> -->
                     <div class="row">
                         <div class="col-lg-6">
-                            <canvas id="countVisitByMonth" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">CANTIDAD DE VISITAS POR MES</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="countVisitByMonth" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
                         </div>
                         <div class="col-lg-6">
-                            <canvas id="canvasId" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">PORCENTAJE EN BASE A 100 DE DEPOSITOS PAGADOS POR LOS VECINOS.</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="depositosPagosVecindal" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-6">
+
+
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">TOTAL DE EFECTIVO GENERADO POR PAGOS DE CARGOS</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="pagosPorCargos" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">CANTIDAD DE CONVENIOS INICIADOS POR MES</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="conveniosPorMes" style="min-height: 250px; height: 450px; max-height: 450px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+
                         </div>
                     </div>
 
@@ -356,7 +444,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $("#" + id).load(archivo);
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             printGrafics();
         });
     </script>
