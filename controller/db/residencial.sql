@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : residencial
+ Source Server         : Conexion-01-MySQL
  Source Server Type    : MySQL
- Source Server Version : 100422
+ Source Server Version : 100420
  Source Host           : localhost:3306
  Source Schema         : residencial
 
  Target Server Type    : MySQL
- Target Server Version : 100422
+ Target Server Version : 100420
  File Encoding         : 65001
 
- Date: 10/12/2021 17:03:37
+ Date: 10/12/2021 23:06:27
 */
 
 SET NAMES utf8mb4;
@@ -22,9 +22,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `bitacora`;
 CREATE TABLE `bitacora`  (
-  `id_bitacora` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la bitacora',
-  `fecha` datetime NOT NULL COMMENT 'Fecha para registrar la accion del vecino',
-  `Id_vecino` int NOT NULL COMMENT 'id del vecino que hace la accion',
+  `id_bitacora` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la bitacora',
+  `fecha` datetime(0) NOT NULL COMMENT 'Fecha para registrar la accion del vecino',
+  `Id_vecino` int(11) NOT NULL COMMENT 'id del vecino que hace la accion',
   `accion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Accion que hace el vecino en el sistema',
   `descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Descripcion o detalle para llevar bitacora',
   PRIMARY KEY (`id_bitacora`) USING BTREE,
@@ -51,7 +51,7 @@ INSERT INTO `bitacora` VALUES (10, '2021-12-10 19:30:15', 7, 'LOGIN', 'El usuari
 -- ----------------------------
 DROP TABLE IF EXISTS `cargo_mensual`;
 CREATE TABLE `cargo_mensual`  (
-  `id_cargo` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador Cargo',
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador Cargo',
   `fecha_cargo` date NOT NULL COMMENT 'Fecha en que aplica el cargo',
   `monto_cargo` decimal(11, 2) NOT NULL COMMENT 'Monto del cargo',
   `descripcion_cargo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Descripcion del cargo aplicado',
@@ -68,33 +68,32 @@ INSERT INTO `cargo_mensual` VALUES (3, '2021-12-31', 1500.55, 'Pago correspondie
 INSERT INTO `cargo_mensual` VALUES (4, '2021-12-31', 520.00, 'Pago de agua', 'ACTIVO');
 INSERT INTO `cargo_mensual` VALUES (5, '2021-12-31', 450.00, 'Pago de energia', 'ANULADO');
 INSERT INTO `cargo_mensual` VALUES (6, '2021-12-31', 2000.00, 'Este es una cargo por mantenimiento del muro ', 'ACTIVO');
-INSERT INTO `cargo_mensual` VALUES (7, '2021-12-08', 2500.00, 'Hola Mundo', 'ACTIVO');
-INSERT INTO `cargo_mensual` VALUES (8, '2021-11-05', 5000.00, 'dsds', 'ACTIVO');
-INSERT INTO `cargo_mensual` VALUES (9, '2021-10-05', 2500.00, 'ASSAA', 'ACTIVO');
+INSERT INTO `cargo_mensual` VALUES (7, '2021-12-08', 2500.00, 'Wifi Residencial', 'ACTIVO');
+INSERT INTO `cargo_mensual` VALUES (8, '2021-11-05', 5000.00, 'Vigilancia', 'ACTIVO');
+INSERT INTO `cargo_mensual` VALUES (9, '2021-10-05', 2500.00, 'Camaras Seguridad', 'ACTIVO');
 INSERT INTO `cargo_mensual` VALUES (10, '2021-08-01', 1500.00, 'Mensualidad ', 'ACTIVO');
-INSERT INTO `cargo_mensual` VALUES (11, '2021-07-01', 1780.00, 'Mensualidad', 'ACTIVO');
 
 -- ----------------------------
 -- Table structure for convenio
 -- ----------------------------
 DROP TABLE IF EXISTS `convenio`;
 CREATE TABLE `convenio`  (
-  `id_convenio` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador del convenio',
-  `id_vecino` int NOT NULL COMMENT 'Identificador del vecino con el cual se realiza convenio',
+  `id_convenio` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del convenio',
+  `id_vecino` int(11) NOT NULL COMMENT 'Identificador del vecino con el cual se realiza convenio',
   `fecha_inicio` date NOT NULL COMMENT 'Fecha de inicio de pago del convenio',
   `fecha_ultimo_pago` date NOT NULL COMMENT 'Fecha en que se realiza el ultimo pago',
   `monto_inicial` decimal(11, 2) NOT NULL COMMENT 'Monto adeudado del vecino',
   `prima` decimal(11, 2) NOT NULL COMMENT 'Prima pagada por el vecino',
   `descuento` decimal(11, 2) NOT NULL COMMENT 'Descuento aplicado al vecino sobre la deuda inicial',
   `saldo_restante` decimal(11, 2) NOT NULL COMMENT 'Saldo restante despues de pago de prima y descuento',
-  `cuotas` int NOT NULL COMMENT 'Cuotas acordado para pago de saldo restante',
+  `cuotas` int(11) NOT NULL COMMENT 'Cuotas acordado para pago de saldo restante',
   `descripcion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Descripcion o detalles sobre el convenio',
   `estado` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Estado del convenio (Pendiente o Cancelado)',
-  `id_cargo` int NOT NULL COMMENT 'Identificador del cargo del cual se hara el convenio',
+  `id_cargo` int(11) NOT NULL COMMENT 'Identificador del cargo del cual se hara el convenio',
   PRIMARY KEY (`id_convenio`, `id_vecino`) USING BTREE,
   INDEX `fk_convenio_vecino`(`id_vecino`) USING BTREE,
   CONSTRAINT `fk_convenio_vecino` FOREIGN KEY (`id_vecino`) REFERENCES `vecino` (`id_vecino`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Tabla de todos los convenios realizados con los convenios que presentan saldos en mora o que lo requieren por algun problema economico.' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 209 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Tabla de todos los convenios realizados con los convenios que presentan saldos en mora o que lo requieren por algun problema economico.' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of convenio
@@ -120,19 +119,190 @@ INSERT INTO `convenio` VALUES (42, 3, '2021-12-10', '2021-10-23', 2500.00, 450.0
 INSERT INTO `convenio` VALUES (43, 4, '2021-12-10', '2021-10-23', 2500.00, 700.00, 130.00, 1670.00, 3, 'Convenio de pago de mes de septiembre', 'Pendiente', 1);
 INSERT INTO `convenio` VALUES (44, 4, '2021-12-10', '2022-01-01', 2500.00, 800.00, 100.00, 1600.00, 3, 'Convenio de pago ASSA', 'Pendiente', 9);
 INSERT INTO `convenio` VALUES (45, 5, '2021-12-10', '2022-01-01', 2000.00, 700.00, 150.00, 1150.00, 2, 'Convenio de pago mantenimiento del muro', 'Pendiente', 6);
+INSERT INTO `convenio` VALUES (46, 21, '2021-01-08', '2021-03-15', 500.00, 10.00, 0.05, 1000.00, 1, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (47, 22, '2021-01-09', '2021-03-16', 600.00, 20.00, 0.05, 1500.00, 2, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (48, 23, '2021-01-10', '2021-03-17', 700.00, 30.00, 0.05, 2000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (49, 24, '2021-01-11', '2021-03-18', 800.00, 40.00, 0.05, 2500.00, 4, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (50, 25, '2021-01-12', '2021-03-19', 900.00, 50.00, 0.05, 3000.00, 5, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (51, 26, '2021-01-13', '2021-03-20', 1000.00, 60.00, 0.05, 3500.00, 6, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (52, 27, '2021-01-14', '2021-03-21', 1100.00, 70.00, 0.05, 4000.00, 7, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (53, 28, '2021-01-15', '2021-03-22', 1200.00, 80.00, 0.05, 4500.00, 8, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (54, 29, '2021-01-16', '2021-03-23', 1300.00, 90.00, 0.05, 5000.00, 9, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (55, 30, '2021-01-17', '2021-03-24', 1400.00, 100.00, 0.05, 5500.00, 10, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (56, 31, '2021-01-18', '2021-03-25', 1500.00, 110.00, 0.05, 6000.00, 11, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (57, 32, '2021-01-19', '2021-03-26', 1600.00, 120.00, 0.05, 6500.00, 12, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (58, 33, '2021-01-20', '2021-03-27', 1700.00, 130.00, 0.05, 7000.00, 13, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (59, 34, '2021-01-21', '2021-03-28', 1800.00, 140.00, 0.05, 7500.00, 14, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (60, 35, '2021-01-22', '2021-03-29', 1900.00, 150.00, 0.05, 8000.00, 15, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (61, 36, '2021-01-23', '2021-03-30', 2000.00, 160.00, 0.05, 8500.00, 16, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (62, 37, '2021-01-24', '2021-03-31', 2100.00, 170.00, 0.05, 9000.00, 17, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (63, 38, '2021-02-01', '2021-05-31', 2200.00, 180.00, 0.05, 9500.00, 18, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (64, 39, '2021-02-01', '2021-05-31', 2300.00, 190.00, 0.05, 10000.00, 19, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (65, 21, '2021-02-01', '2021-05-31', 2400.00, 200.00, 0.05, 10500.00, 20, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (66, 22, '2021-02-01', '2021-05-31', 2500.00, 210.00, 0.05, 11000.00, 21, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (67, 23, '2021-02-01', '2021-05-31', 2600.00, 220.00, 0.05, 11500.00, 22, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (68, 24, '2021-02-01', '2021-05-31', 2700.00, 230.00, 0.05, 12000.00, 23, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (69, 25, '2021-02-01', '2021-05-31', 2800.00, 240.00, 0.05, 12500.00, 24, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (70, 26, '2021-02-01', '2021-05-31', 2900.00, 250.00, 0.05, 13000.00, 25, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (71, 27, '2021-02-01', '2021-05-31', 3000.00, 260.00, 0.05, 13500.00, 1, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (72, 28, '2021-03-01', '2021-04-15', 3100.00, 270.00, 0.05, 14000.00, 2, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (73, 29, '2021-03-01', '2021-04-15', 3200.00, 280.00, 0.05, 14500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (74, 30, '2021-03-01', '2021-04-15', 3300.00, 290.00, 0.05, 15000.00, 4, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (75, 31, '2021-03-01', '2021-04-15', 3400.00, 300.00, 0.05, 15500.00, 5, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (76, 32, '2021-03-01', '2021-04-15', 3500.00, 310.00, 0.05, 16000.00, 6, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (77, 33, '2021-04-02', '2021-05-16', 3600.00, 320.00, 0.05, 16500.00, 7, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (78, 34, '2021-04-03', '2021-05-17', 3700.00, 330.00, 0.05, 17000.00, 8, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (79, 35, '2021-04-04', '2021-05-18', 3800.00, 340.00, 0.05, 17500.00, 9, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (80, 36, '2021-04-05', '2021-05-19', 3900.00, 350.00, 0.05, 18000.00, 10, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (81, 37, '2021-04-06', '2021-05-20', 4000.00, 360.00, 0.05, 18500.00, 11, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (82, 38, '2021-05-06', '2021-07-20', 4100.00, 370.00, 0.05, 19000.00, 12, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (83, 39, '2021-05-07', '2021-07-21', 4200.00, 380.00, 0.05, 19500.00, 13, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (84, 21, '2021-05-08', '2021-07-22', 4300.00, 390.00, 0.05, 20000.00, 14, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (85, 22, '2021-05-09', '2021-07-23', 4400.00, 400.00, 0.05, 20500.00, 15, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (86, 23, '2021-05-10', '2021-07-24', 4500.00, 410.00, 0.05, 21000.00, 16, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (87, 24, '2021-05-11', '2021-07-25', 4600.00, 420.00, 0.05, 21500.00, 17, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (88, 25, '2021-06-11', '2021-08-10', 4700.00, 430.00, 0.05, 22000.00, 18, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (89, 26, '2021-06-12', '2021-08-11', 4800.00, 440.00, 0.05, 22500.00, 19, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (90, 27, '2021-06-13', '2021-08-12', 4900.00, 450.00, 0.05, 23000.00, 20, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (91, 28, '2021-06-14', '2021-08-13', 5000.00, 460.00, 0.05, 23500.00, 21, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (92, 29, '2021-06-15', '2021-08-14', 5100.00, 470.00, 0.05, 24000.00, 22, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (93, 30, '2021-06-16', '2021-08-15', 5200.00, 480.00, 0.05, 24500.00, 23, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (94, 31, '2021-06-17', '2021-08-16', 5300.00, 490.00, 0.05, 25000.00, 24, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (95, 32, '2021-06-18', '2021-08-17', 5400.00, 500.00, 0.05, 25500.00, 25, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (96, 33, '2021-06-19', '2021-08-18', 5500.00, 510.00, 0.05, 26000.00, 26, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (97, 34, '2021-06-20', '2021-08-19', 5600.00, 520.00, 0.05, 26500.00, 27, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (98, 35, '2021-06-21', '2021-08-20', 5700.00, 530.00, 0.05, 27000.00, 28, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (99, 36, '2021-06-22', '2021-08-21', 5800.00, 540.00, 0.05, 27500.00, 29, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (100, 37, '2021-06-23', '2021-08-22', 5900.00, 550.00, 0.05, 28000.00, 30, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (101, 38, '2021-06-24', '2021-08-23', 6000.00, 560.00, 0.05, 28500.00, 31, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (102, 39, '2021-07-01', '2021-08-23', 6100.00, 570.00, 0.05, 29000.00, 32, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (103, 21, '2021-07-02', '2021-08-24', 6200.00, 580.00, 0.05, 29500.00, 33, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (104, 22, '2021-07-03', '2021-08-25', 6300.00, 590.00, 0.05, 30000.00, 34, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (105, 23, '2021-07-04', '2021-08-26', 6400.00, 600.00, 0.05, 30500.00, 35, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (106, 24, '2021-07-05', '2021-08-27', 6500.00, 610.00, 0.05, 31000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (107, 25, '2021-07-06', '2021-08-28', 6600.00, 620.00, 0.05, 31500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (108, 26, '2021-07-07', '2021-08-29', 6700.00, 630.00, 0.05, 32000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (109, 27, '2021-07-08', '2021-08-30', 6800.00, 640.00, 0.05, 32500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (110, 28, '2021-07-09', '2021-08-31', 6900.00, 650.00, 0.05, 33000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (111, 29, '2021-07-10', '2021-09-01', 7000.00, 660.00, 0.05, 33500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (112, 30, '2021-07-11', '2021-09-02', 7100.00, 670.00, 0.05, 34000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (113, 31, '2021-07-12', '2021-09-03', 7200.00, 680.00, 0.05, 34500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (114, 32, '2021-07-13', '2021-09-04', 7300.00, 690.00, 0.05, 35000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (115, 33, '2021-07-14', '2021-09-05', 7400.00, 700.00, 0.05, 35500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (116, 34, '2021-08-14', '2021-09-05', 7500.00, 710.00, 0.05, 36000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (117, 35, '2021-08-15', '2021-09-06', 7600.00, 720.00, 0.05, 36500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (118, 36, '2021-08-16', '2021-09-07', 7700.00, 730.00, 0.05, 37000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (119, 37, '2021-08-17', '2021-09-08', 7800.00, 740.00, 0.05, 37500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (120, 38, '2021-08-18', '2021-09-09', 7900.00, 750.00, 0.05, 38000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (121, 39, '2021-08-19', '2021-09-10', 8000.00, 760.00, 0.05, 38500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (122, 21, '2021-08-20', '2021-09-11', 8100.00, 770.00, 0.05, 39000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (123, 22, '2021-08-21', '2021-09-12', 8200.00, 780.00, 0.05, 39500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (124, 23, '2021-08-22', '2021-09-13', 8300.00, 790.00, 0.05, 40000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (125, 24, '2021-08-23', '2021-09-14', 8400.00, 800.00, 0.05, 40500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (126, 25, '2021-08-24', '2021-09-15', 8500.00, 810.00, 0.05, 41000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (127, 26, '2021-08-25', '2021-09-16', 8600.00, 820.00, 0.05, 41500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (128, 27, '2021-08-26', '2021-09-17', 8700.00, 830.00, 0.05, 42000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (129, 28, '2021-08-27', '2021-09-18', 8800.00, 840.00, 0.05, 42500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (130, 29, '2021-08-28', '2021-09-19', 8900.00, 850.00, 0.05, 43000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (131, 30, '2021-08-29', '2021-09-20', 9000.00, 860.00, 0.05, 43500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (132, 31, '2021-08-30', '2021-09-21', 9100.00, 870.00, 0.05, 44000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (133, 32, '2021-08-31', '2021-09-22', 9200.00, 880.00, 0.05, 44500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (134, 33, '2021-09-01', '2021-09-23', 9300.00, 890.00, 0.05, 45000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (135, 34, '2021-09-02', '2021-09-24', 9400.00, 900.00, 0.05, 45500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (136, 35, '2021-09-03', '2021-09-25', 9500.00, 910.00, 0.05, 46000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (137, 36, '2021-09-04', '2021-09-26', 9600.00, 920.00, 0.05, 46500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (138, 37, '2021-09-05', '2021-09-27', 9700.00, 930.00, 0.05, 47000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (139, 38, '2021-09-06', '2021-09-28', 9800.00, 940.00, 0.05, 47500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (140, 39, '2021-09-07', '2021-09-29', 9900.00, 950.00, 0.05, 48000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (141, 21, '2021-09-08', '2021-09-30', 10000.00, 960.00, 0.05, 48500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (142, 22, '2021-09-09', '2021-10-01', 10100.00, 970.00, 0.05, 49000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (143, 23, '2021-09-10', '2021-10-02', 10200.00, 980.00, 0.05, 49500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (144, 24, '2021-09-11', '2021-10-03', 10300.00, 990.00, 0.05, 50000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (145, 25, '2021-09-12', '2021-10-04', 10400.00, 1000.00, 0.05, 50500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (146, 26, '2021-09-13', '2021-10-05', 10500.00, 1010.00, 0.05, 51000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (147, 27, '2021-09-14', '2021-10-06', 10600.00, 1020.00, 0.05, 51500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (148, 28, '2021-09-15', '2021-10-07', 10700.00, 1030.00, 0.05, 52000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (149, 29, '2021-09-16', '2021-10-08', 10800.00, 1040.00, 0.05, 52500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (150, 30, '2021-09-17', '2021-10-09', 10900.00, 1050.00, 0.05, 53000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (151, 31, '2021-09-18', '2021-10-10', 11000.00, 1060.00, 0.05, 53500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (152, 32, '2021-09-19', '2021-10-11', 11100.00, 1070.00, 0.05, 54000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (153, 33, '2021-09-20', '2021-10-12', 11200.00, 1080.00, 0.05, 54500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (154, 34, '2021-09-21', '2021-10-13', 11300.00, 1090.00, 0.05, 55000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (155, 35, '2021-09-22', '2021-10-14', 11400.00, 1100.00, 0.05, 55500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (156, 36, '2021-09-23', '2021-10-15', 11500.00, 1110.00, 0.05, 56000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (157, 37, '2021-09-24', '2021-10-16', 11600.00, 1120.00, 0.05, 56500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (158, 38, '2021-09-25', '2021-10-17', 11700.00, 1130.00, 0.05, 57000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (159, 39, '2021-09-26', '2021-10-18', 11800.00, 1140.00, 0.05, 57500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (160, 21, '2021-09-27', '2021-10-01', 11900.00, 1150.00, 0.05, 58000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (161, 22, '2021-09-28', '2021-10-02', 12000.00, 1160.00, 0.05, 58500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (162, 23, '2021-09-29', '2021-10-03', 12100.00, 1170.00, 0.05, 59000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (163, 24, '2021-09-30', '2021-10-04', 12200.00, 1180.00, 0.05, 59500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (164, 25, '2021-10-01', '2021-10-05', 12300.00, 1190.00, 0.05, 60000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (165, 26, '2021-10-02', '2021-10-06', 12400.00, 1200.00, 0.05, 60500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (166, 27, '2021-10-03', '2021-10-07', 12500.00, 1210.00, 0.05, 61000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (167, 28, '2021-10-04', '2021-10-08', 12600.00, 1220.00, 0.05, 61500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (168, 29, '2021-10-05', '2021-10-09', 12700.00, 1230.00, 0.05, 62000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (169, 30, '2021-10-06', '2021-10-10', 12800.00, 1240.00, 0.05, 62500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (170, 31, '2021-10-07', '2021-10-11', 12900.00, 1250.00, 0.05, 63000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (171, 32, '2021-10-08', '2021-10-12', 13000.00, 1260.00, 0.05, 63500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (172, 33, '2021-10-09', '2021-10-13', 13100.00, 1270.00, 0.05, 64000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (173, 34, '2021-10-10', '2021-10-14', 13200.00, 1280.00, 0.05, 64500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (174, 35, '2021-10-11', '2021-10-15', 13300.00, 1290.00, 0.05, 65000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (175, 36, '2021-10-12', '2021-10-16', 13400.00, 1300.00, 0.05, 65500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (176, 37, '2021-10-13', '2021-10-17', 13500.00, 1310.00, 0.05, 66000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (177, 38, '2021-10-14', '2021-10-18', 13600.00, 1320.00, 0.05, 66500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (178, 39, '2021-10-15', '2021-10-19', 13700.00, 1330.00, 0.05, 67000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (179, 21, '2021-10-16', '2021-10-20', 13800.00, 1340.00, 0.05, 67500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (180, 22, '2021-10-17', '2021-10-21', 13900.00, 1350.00, 0.05, 68000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (181, 23, '2021-10-18', '2021-10-22', 14000.00, 1360.00, 0.05, 68500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (182, 24, '2021-10-19', '2021-10-23', 14100.00, 1370.00, 0.05, 69000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (183, 25, '2021-10-20', '2021-10-24', 14200.00, 1380.00, 0.05, 69500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (184, 26, '2021-10-21', '2021-10-25', 14300.00, 1390.00, 0.05, 70000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (185, 27, '2021-10-22', '2021-10-26', 14400.00, 1400.00, 0.05, 70500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (186, 28, '2021-10-23', '2021-10-27', 14500.00, 1410.00, 0.05, 71000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (187, 29, '2021-10-24', '2021-10-28', 14600.00, 1420.00, 0.05, 71500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (188, 30, '2021-10-25', '2021-10-29', 14700.00, 1430.00, 0.05, 72000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (189, 31, '2021-10-26', '2021-10-30', 14800.00, 1440.00, 0.05, 72500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (190, 32, '2021-10-27', '2021-10-31', 14900.00, 1450.00, 0.05, 73000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (191, 33, '2021-10-28', '2021-11-01', 15000.00, 1460.00, 0.05, 73500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (192, 34, '2021-10-29', '2021-11-02', 15100.00, 1470.00, 0.05, 74000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (193, 35, '2021-10-30', '2021-11-03', 15200.00, 1480.00, 0.05, 74500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (194, 36, '2021-10-31', '2021-11-04', 15300.00, 1490.00, 0.05, 75000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (195, 37, '2021-11-01', '2021-11-05', 15400.00, 1500.00, 0.05, 75500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (196, 38, '2021-11-02', '2021-11-06', 15500.00, 1510.00, 0.05, 76000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (197, 39, '2021-11-03', '2021-11-07', 15600.00, 1520.00, 0.05, 76500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (198, 21, '2021-11-04', '2021-11-08', 15700.00, 1530.00, 0.05, 77000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (199, 22, '2021-11-05', '2021-11-09', 15800.00, 1540.00, 0.05, 77500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (200, 23, '2021-11-06', '2021-11-10', 15900.00, 1550.00, 0.05, 78000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (201, 24, '2021-11-07', '2021-11-11', 16000.00, 1560.00, 0.05, 78500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (202, 25, '2021-11-08', '2021-11-12', 16100.00, 1570.00, 0.05, 79000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (203, 26, '2021-11-09', '2021-11-13', 16200.00, 1580.00, 0.05, 79500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (204, 27, '2021-11-10', '2021-11-14', 16300.00, 1590.00, 0.05, 80000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (205, 28, '2021-11-11', '2021-11-15', 16400.00, 1600.00, 0.05, 80500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (206, 29, '2021-11-12', '2021-11-16', 16500.00, 1610.00, 0.05, 81000.00, 3, 'Hola Mundo', 'Pendiente', 1);
+INSERT INTO `convenio` VALUES (207, 30, '2021-11-13', '2021-11-17', 16600.00, 1620.00, 0.05, 81500.00, 3, 'Hola Mundo', 'Cancelado', 2);
+INSERT INTO `convenio` VALUES (208, 31, '2021-11-14', '2021-11-18', 16700.00, 1630.00, 0.05, 82000.00, 3, 'Hola Mundo', 'Pendiente', 3);
+INSERT INTO `convenio` VALUES (208, 32, '2021-11-15', '2021-11-19', 16800.00, 1640.00, 0.05, 82500.00, 3, 'Hola Mundo', 'Cancelado', 4);
+INSERT INTO `convenio` VALUES (208, 33, '2021-11-16', '2021-11-20', 16900.00, 1650.00, 0.05, 83000.00, 3, 'Hola Mundo', 'Pendiente', 5);
+INSERT INTO `convenio` VALUES (208, 34, '2021-11-17', '2021-11-21', 17000.00, 1660.00, 0.05, 83500.00, 3, 'Hola Mundo', 'Cancelado', 6);
+INSERT INTO `convenio` VALUES (208, 35, '2021-11-18', '2021-11-22', 17100.00, 1670.00, 0.05, 84000.00, 3, 'Hola Mundo', 'Pendiente', 7);
+INSERT INTO `convenio` VALUES (208, 36, '2021-11-19', '2021-11-23', 17200.00, 1680.00, 0.05, 84500.00, 3, 'Hola Mundo', 'Cancelado', 8);
+INSERT INTO `convenio` VALUES (208, 37, '2021-12-20', '2022-01-20', 17300.00, 1690.00, 0.05, 85000.00, 3, 'Hola Mundo', 'Pendiente', 9);
+INSERT INTO `convenio` VALUES (208, 38, '2021-12-21', '2022-01-20', 17400.00, 1700.00, 0.05, 85500.00, 3, 'Hola Mundo', 'Cancelado', 10);
+INSERT INTO `convenio` VALUES (208, 39, '2021-12-22', '2022-01-20', 17500.00, 1710.00, 0.05, 86000.00, 3, 'Hola Mundo', 'Pendiente', 1);
 
 -- ----------------------------
 -- Table structure for deposito
 -- ----------------------------
 DROP TABLE IF EXISTS `deposito`;
 CREATE TABLE `deposito`  (
-  `id_deposito` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador de Deposito',
-  `id_vecino` int NOT NULL COMMENT 'Identificador del vecino que realizo el deposito',
+  `id_deposito` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de Deposito',
+  `id_vecino` int(11) NOT NULL COMMENT 'Identificador del vecino que realizo el deposito',
   `fecha` date NOT NULL COMMENT 'Fecha en que se realizo el deposito',
   `monto` decimal(11, 2) NOT NULL COMMENT 'Monto del deposito',
   `agencia_bancario` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Banco en que realizo deposito',
   `numero_referencia` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Referencia del deposito',
-  `id_cargo` int NULL DEFAULT NULL,
+  `id_cargo` int(11) NULL DEFAULT NULL,
   `deposito_estado` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'ACTIVO',
   PRIMARY KEY (`id_deposito`, `id_vecino`) USING BTREE,
   INDEX `fk_deposito_vecino`(`id_vecino`) USING BTREE,
@@ -160,7 +330,6 @@ INSERT INTO `deposito` VALUES (13, 4, '2021-08-01', 2500.00, 'Banco Ficohsa', '1
 INSERT INTO `deposito` VALUES (14, 5, '2021-07-02', 3500.00, 'Banco Ficohsa', '5655', 8, 'ACTIVO');
 INSERT INTO `deposito` VALUES (15, 4, '2021-06-01', 500.00, 'Banco Ficohsa', '111', 9, 'ACTIVO');
 INSERT INTO `deposito` VALUES (16, 5, '2021-05-01', 1570.00, 'Banco Ficohsa', '12222', 10, 'ACTIVO');
-INSERT INTO `deposito` VALUES (17, 1, '2021-04-01', 1111.00, 'Banco Ficohsa', '216554', 11, 'ACTIVO');
 INSERT INTO `deposito` VALUES (18, 2, '2021-03-01', 6550.00, 'Banco Ficohsa', '666', 5, 'ACTIVO');
 INSERT INTO `deposito` VALUES (19, 3, '2021-02-01', 1750.00, 'Banco Ficohsa', '1', 6, 'ACTIVO');
 INSERT INTO `deposito` VALUES (20, 4, '2021-01-01', 1440.00, 'Banco Ficohsa', '1', 7, 'ACTIVO');
@@ -170,7 +339,7 @@ INSERT INTO `deposito` VALUES (20, 4, '2021-01-01', 1440.00, 'Banco Ficohsa', '1
 -- ----------------------------
 DROP TABLE IF EXISTS `pago`;
 CREATE TABLE `pago`  (
-  `id_pago` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador del pago',
+  `id_pago` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del pago',
   `fecha` date NOT NULL COMMENT 'Fecha del pago',
   `monto` decimal(11, 2) NOT NULL COMMENT 'Monto del pago realizado',
   `tipo_gasto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tipo del gasto',
@@ -211,8 +380,8 @@ INSERT INTO `pago` VALUES (24, '2021-08-01', 400.00, 'Aseo', 'Pago de aseo mes d
 -- ----------------------------
 DROP TABLE IF EXISTS `pago_vecino`;
 CREATE TABLE `pago_vecino`  (
-  `id_pago` int NOT NULL COMMENT 'Identificador del pago',
-  `id_vecino` int NOT NULL COMMENT 'Idenfificador del vecino',
+  `id_pago` int(11) NOT NULL COMMENT 'Identificador del pago',
+  `id_vecino` int(11) NOT NULL COMMENT 'Idenfificador del vecino',
   PRIMARY KEY (`id_pago`, `id_vecino`) USING BTREE,
   INDEX `fk_vecino_pago`(`id_vecino`) USING BTREE,
   CONSTRAINT `fk_pago_pago` FOREIGN KEY (`id_pago`) REFERENCES `pago` (`id_pago`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -228,7 +397,7 @@ CREATE TABLE `pago_vecino`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `vecino`;
 CREATE TABLE `vecino`  (
-  `id_vecino` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador de Vecino',
+  `id_vecino` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de Vecino',
   `primer_nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Primer Nombre del vecino',
   `segundo_nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Segundo nombre del vecino',
   `primer_apellido` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Primer apellido del vecino',
@@ -236,15 +405,15 @@ CREATE TABLE `vecino`  (
   `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Documento Nacional de Identificacion del vecino',
   `fecha_nacimiento` date NOT NULL COMMENT 'Campo donde se almacena la fecha de nacimiento del vecino',
   `telefono` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Telefono del vecino',
-  `num_casa` int NOT NULL COMMENT 'Numero de casa del vecino',
-  `num_bloque` int NOT NULL COMMENT 'Numero bloque donde reside el vecino',
-  `cant_vehiculos` int NOT NULL COMMENT 'Cantidad de vehiculos que posee el vecino',
+  `num_casa` int(11) NOT NULL COMMENT 'Numero de casa del vecino',
+  `num_bloque` int(11) NOT NULL COMMENT 'Numero bloque donde reside el vecino',
+  `cant_vehiculos` int(11) NOT NULL COMMENT 'Cantidad de vehiculos que posee el vecino',
   `usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Usuario de acceso del vecino',
   `contrasenia` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Contraseña del vecino',
   `tipo_usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Perfil de acceso del vecino (Administrador o Vecino)',
   `estado` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Estado del vecino (Activo / Inactivo)',
   PRIMARY KEY (`id_vecino`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Tabla que contiene los datos generales de cada uno de los vecinos asi como el usuario y perfil de acceso que cada uno tiene.' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Tabla que contiene los datos generales de cada uno de los vecinos asi como el usuario y perfil de acceso que cada uno tiene.' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of vecino
@@ -255,16 +424,59 @@ INSERT INTO `vecino` VALUES (3, 'Juan', 'Alcachofa', 'Saturno', 'Pluton', '08032
 INSERT INTO `vecino` VALUES (4, 'Lionel', 'Andres', 'Messi', 'ApellidoActualizado', '09021002005', '1998-01-01', '858585858', 5, 5, 5, 'messi', 'admin', 'VECINO', 'ACTIVO');
 INSERT INTO `vecino` VALUES (5, 'Kimich', 'Bayern', 'Munich', 'Alvarez', '1804177700263', '1998-01-01', '06060606', 10, 9, 8, 'kimich', 'admin', 'VECINO', 'ACTIVO');
 INSERT INTO `vecino` VALUES (6, 'Edwin', 'Arnulfo', 'Matamoros', 'Moreira', '0205220300125', '1992-04-02', '9523-8565', 0, 4, 2, 'arnulfo', 'arnulfo', 'VECINO', 'ACTIVO');
-INSERT INTO `vecino` VALUES (7, 'llllllllllllll', 'llllllllllllll', 'llllllllllllllll', 'lllllllllllllllllll', '454654654564564564', '2016-12-31', '546464564545', 4, 4, 4, 'emanuel', 'admin', 'ADMINISTRADOR', 'ACTIVO');
+INSERT INTO `vecino` VALUES (7, 'Josue', 'Ernesto', 'Valverde', 'Carmona', '05160050612165', '2016-12-31', '546464564545', 4, 4, 4, 'emanuel', 'admin', 'ADMINISTRADOR', 'ACTIVO');
+INSERT INTO `vecino` VALUES (8, 'María', 'Jose', 'Hernandez', 'Gomez', '1212122315', '1998-01-01', '858585858', 5, 3, 2, 'María', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (9, 'Liam', 'Jose', 'Hernandez', 'Gomez', '1212412315', '1998-01-02', '858585858', 5, 3, 2, 'Liam', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (10, 'Sebastian', 'Jose', 'Hernandez', 'Gomez', '1212912315', '1998-01-03', '858585858', 5, 3, 2, 'Sebastian', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (11, 'Thiago', 'Jose', 'Hernandez', 'Gomez', '121212315', '1998-01-04', '858585858', 5, 3, 2, 'Thiago', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (12, 'Dylan', 'Jose', 'Hernandez', 'Gomez', '1212112315', '1998-01-05', '858585858', 5, 3, 2, 'Dylan', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (13, 'Mateo', 'Jose', 'Hernandez', 'Gomez', '1212122315', '1998-01-06', '858585858', 5, 3, 2, 'Mateo', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (14, 'Ian', 'Jose', 'Hernandez', 'Gomez', '1217212315', '1998-01-07', '858585858', 5, 3, 2, 'Ian', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (15, 'Lucas', 'Jose', 'Hernandez', 'Gomez', '1421212315', '1998-01-08', '858585858', 5, 3, 2, 'Lucas', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (16, 'Noah', 'Jose', 'Hernandez', 'Gomez', '1291212315', '1998-01-09', '858585858', 5, 3, 2, 'Noah', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (17, 'Jayden', 'Jose', 'Hernandez', 'Gomez', '12121352315', '1998-01-10', '858585858', 5, 3, 2, 'Jayden', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (18, 'Matias', 'Jose', 'Hernandez', 'Gomez', '1212312315', '1998-01-11', '858585858', 5, 3, 2, 'Matias', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (19, 'Liam', 'Jose', 'Hernandez', 'Gomez', '12121012315', '1998-01-12', '858585858', 5, 3, 2, 'Liam', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (20, 'Noah', 'Jose', 'Hernandez', 'Gomez', '1212212315', '1998-01-13', '858585858', 5, 3, 2, 'Noah', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (21, 'Juan', 'Jose', 'Hernandez', 'Gomez', '1212122315', '1998-01-01', '858585858', 5, 3, 2, 'Juan', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (22, 'Alberto', 'Jose', 'Hernandez', 'Gomez', '1212412315', '1998-01-02', '858585858', 5, 3, 2, 'Alberto', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (23, 'David', 'Jose', 'Hernandez', 'Gomez', '1212912315', '1998-01-03', '858585858', 5, 3, 2, 'David', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (24, 'Lionel', 'Jose', 'Hernandez', 'Gomez', '121212315', '1998-01-04', '858585858', 5, 3, 2, 'Lionel', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (25, 'Robert', 'Jose', 'Hernandez', 'Gomez', '1212112315', '1998-01-05', '858585858', 5, 3, 2, 'Robert', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (26, 'Davis', 'Jose', 'Hernandez', 'Gomez', '1212122315', '1998-01-06', '858585858', 5, 3, 2, 'Davis', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (27, 'Saturno', 'Jose', 'Hernandez', 'Gomez', '1217212315', '1998-01-07', '858585858', 5, 3, 2, 'Saturno', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (28, 'Pluton', 'Jose', 'Hernandez', 'Gomez', '1421212315', '1998-01-08', '858585858', 5, 3, 2, 'Pluton', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (29, 'Luna', 'Jose', 'Hernandez', 'Gomez', '1291212315', '1998-01-09', '858585858', 5, 3, 2, 'Luna', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (30, 'Skoby', 'Jose', 'Hernandez', 'Gomez', '12121352315', '1998-01-10', '858585858', 5, 3, 2, 'Skoby', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (31, 'Batman', 'Jose', 'Hernandez', 'Gomez', '1212312315', '1998-01-11', '858585858', 5, 3, 2, 'Batman', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (32, 'Capitan', 'Jose', 'Hernandez', 'Gomez', '12121012315', '1998-01-12', '858585858', 5, 3, 2, 'Capitan', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (33, 'Otamendi', 'Jose', 'Hernandez', 'Gomez', '121999905', '1998-01-13', '858585858', 5, 3, 2, 'Otamendi', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (34, 'DiMaria', 'Jose', 'Hernandez', 'Gomez', '632598', '1998-01-14', '858585858', 5, 3, 2, 'DiMaria', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (35, 'Azpilicueta', 'Jose', 'Hernandez', 'Gomez', '68285', '1998-01-15', '858585858', 5, 3, 2, 'Azpilicueta', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (36, 'Yatra', 'Jose', 'Hernandez', 'Gomez', '73263', '1998-01-16', '858585858', 5, 3, 2, 'Yatra', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (37, 'Alcantara', 'Jose', 'Hernandez', 'Gomez', '7846', '1998-01-17', '858585858', 5, 3, 2, 'Alcantara', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (38, 'Rose', 'Jose', 'Hernandez', 'Gomez', '8323448', '1998-01-18', '858585858', 5, 3, 2, 'Rose', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (39, 'Matiu', 'Jose', 'Hernandez', 'Gomez', '882336', '1998-01-19', '858585858', 5, 3, 2, 'Matiu', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (40, 'Yana', 'Jose', 'Hernandez', 'Gomez', '93225', '1998-01-20', '858585858', 5, 3, 2, 'Yana', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (41, 'Moura', 'Jose', 'Hernandez', 'Gomez', '9822100', '1998-01-21', '858585858', 5, 3, 2, 'Moura', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (42, 'Spekter', 'Jose', 'Hernandez', 'Gomez', '10320004', '1998-01-22', '858585858', 5, 3, 2, 'Spekter', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (43, 'Janeth', 'Jose', 'Hernandez', 'Gomez', '10825257', '1998-01-23', '858585858', 5, 3, 2, 'Janeth', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (44, 'Savedra', 'Jose', 'Hernandez', 'Gomez', '11322525', '1998-01-24', '858585858', 5, 3, 2, 'Savedra', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (45, 'Liandro', 'Jose', 'Hernandez', 'Gomez', '184942', '1998-01-25', '858585858', 5, 3, 2, 'Liandro', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (46, 'Suazo', 'Jose', 'Hernandez', 'Gomez', '1231051615', '1998-01-26', '858585858', 5, 3, 2, 'Suazo', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (47, 'Antonieta', 'Jose', 'Hernandez', 'Gomez', '5646546', '1998-01-27', '858585858', 5, 3, 2, 'Antonieta', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (48, 'Liana', 'Jose', 'Hernandez', 'Gomez', '5252', '1998-01-28', '858585858', 5, 3, 2, 'Liana', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (49, 'Ortencio', 'Jose', 'Hernandez', 'Gomez', '13818857', '1998-01-29', '858585858', 5, 3, 2, 'Ortencio', 'admin', 'VECINO', 'ACTIVO');
+INSERT INTO `vecino` VALUES (50, 'Messi', 'Jose', 'Hernandez', 'Gomez', '1431761099', '1998-01-30', '858585858', 5, 3, 2, 'Messi', 'admin', 'VECINO', 'ACTIVO');
 
 -- ----------------------------
 -- Table structure for visita
 -- ----------------------------
 DROP TABLE IF EXISTS `visita`;
 CREATE TABLE `visita`  (
-  `id_visita` int NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la visita',
-  `id_vecino` int NOT NULL COMMENT 'Identificador del vecino que recibe la visita',
-  `fecha_visita` datetime NOT NULL COMMENT 'Fecha en que realiza la visita',
+  `id_visita` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la visita',
+  `id_vecino` int(11) NOT NULL COMMENT 'Identificador del vecino que recibe la visita',
+  `fecha_visita` datetime(0) NOT NULL COMMENT 'Fecha en que realiza la visita',
   `primer_nombre_visita` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Primer nombre de la visita',
   `segundo_nombre_visita` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Segundo nombre de la visita',
   `primer_apellido_visita` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Primer apellido de la visita',
@@ -274,7 +486,7 @@ CREATE TABLE `visita`  (
   PRIMARY KEY (`id_visita`, `id_vecino`) USING BTREE,
   INDEX `fk_vecino_visita`(`id_vecino`) USING BTREE,
   CONSTRAINT `visita_ibfk_1` FOREIGN KEY (`id_vecino`) REFERENCES `vecino` (`id_vecino`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'Tabla de Visitas que reciben los vecinos registradas a traves de codigo QR.' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 206 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'Tabla de Visitas que reciben los vecinos registradas a traves de codigo QR.' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of visita
@@ -363,6 +575,116 @@ INSERT INTO `visita` VALUES (92, 4, '2021-02-16 05:00:16', 'Flavio ', 'A', 'Carm
 INSERT INTO `visita` VALUES (93, 5, '2021-02-06 05:00:06', 'Flavio ', 'A', 'Carmona', 'Bueso', '5014555184', 'ANULADO');
 INSERT INTO `visita` VALUES (94, 1, '2021-05-18 05:00:18', 'Flavio ', 'A', 'Carmona', 'Bueso', '5014555185', 'INGRESO');
 INSERT INTO `visita` VALUES (95, 1, '2021-04-23 05:00:23', 'Flavio ', 'A', 'Carmona', 'Bueso', '5014555186', 'ANULADO');
+INSERT INTO `visita` VALUES (96, 9, '2020-12-20 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031198', 'INGRESO');
+INSERT INTO `visita` VALUES (97, 10, '2020-12-21 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031199', 'INGRESO');
+INSERT INTO `visita` VALUES (98, 11, '2020-12-22 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031200', 'INGRESO');
+INSERT INTO `visita` VALUES (99, 12, '2020-12-23 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031201', 'INGRESO');
+INSERT INTO `visita` VALUES (100, 13, '2020-12-24 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031202', 'INGRESO');
+INSERT INTO `visita` VALUES (101, 14, '2020-12-25 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031203', 'INGRESO');
+INSERT INTO `visita` VALUES (102, 15, '2020-12-26 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031204', 'INGRESO');
+INSERT INTO `visita` VALUES (103, 16, '2020-12-27 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031205', 'INGRESO');
+INSERT INTO `visita` VALUES (104, 9, '2020-12-28 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031206', 'INGRESO');
+INSERT INTO `visita` VALUES (105, 10, '2020-12-29 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031207', 'INGRESO');
+INSERT INTO `visita` VALUES (106, 11, '2020-12-30 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031208', 'INGRESO');
+INSERT INTO `visita` VALUES (107, 12, '2020-12-31 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031209', 'INGRESO');
+INSERT INTO `visita` VALUES (108, 13, '2021-01-01 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031210', 'INGRESO');
+INSERT INTO `visita` VALUES (109, 7, '2021-01-02 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031211', 'INGRESO');
+INSERT INTO `visita` VALUES (110, 8, '2021-01-03 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031212', 'INGRESO');
+INSERT INTO `visita` VALUES (111, 9, '2021-01-04 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031213', 'INGRESO');
+INSERT INTO `visita` VALUES (112, 10, '2021-01-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031214', 'INGRESO');
+INSERT INTO `visita` VALUES (113, 11, '2021-01-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031215', 'INGRESO');
+INSERT INTO `visita` VALUES (114, 12, '2021-01-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031216', 'INGRESO');
+INSERT INTO `visita` VALUES (115, 13, '2021-02-04 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031217', 'INGRESO');
+INSERT INTO `visita` VALUES (116, 14, '2021-02-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031218', 'INGRESO');
+INSERT INTO `visita` VALUES (117, 15, '2021-05-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031219', 'INGRESO');
+INSERT INTO `visita` VALUES (118, 16, '2021-05-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031220', 'INGRESO');
+INSERT INTO `visita` VALUES (119, 9, '2021-05-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031221', 'INGRESO');
+INSERT INTO `visita` VALUES (120, 10, '2021-05-08 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031222', 'INGRESO');
+INSERT INTO `visita` VALUES (121, 11, '2021-05-09 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031223', 'INGRESO');
+INSERT INTO `visita` VALUES (122, 12, '2021-05-10 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031224', 'INGRESO');
+INSERT INTO `visita` VALUES (123, 13, '2021-05-11 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031225', 'INGRESO');
+INSERT INTO `visita` VALUES (124, 14, '2021-07-11 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031226', 'INGRESO');
+INSERT INTO `visita` VALUES (125, 15, '2021-07-12 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031227', 'INGRESO');
+INSERT INTO `visita` VALUES (126, 16, '2021-07-13 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031228', 'INGRESO');
+INSERT INTO `visita` VALUES (127, 17, '2021-07-14 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031229', 'INGRESO');
+INSERT INTO `visita` VALUES (128, 18, '2021-07-15 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031230', 'INGRESO');
+INSERT INTO `visita` VALUES (129, 19, '2021-07-16 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031231', 'INGRESO');
+INSERT INTO `visita` VALUES (130, 20, '2021-07-17 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031232', 'INGRESO');
+INSERT INTO `visita` VALUES (131, 13, '2021-07-18 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031233', 'INGRESO');
+INSERT INTO `visita` VALUES (132, 14, '2021-01-18 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031234', 'INGRESO');
+INSERT INTO `visita` VALUES (133, 15, '2021-09-18 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031235', 'INGRESO');
+INSERT INTO `visita` VALUES (134, 16, '2021-09-19 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031236', 'INGRESO');
+INSERT INTO `visita` VALUES (135, 17, '2021-09-20 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031237', 'INGRESO');
+INSERT INTO `visita` VALUES (136, 18, '2021-09-21 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031238', 'INGRESO');
+INSERT INTO `visita` VALUES (137, 19, '2021-09-22 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031239', 'INGRESO');
+INSERT INTO `visita` VALUES (138, 20, '2021-09-23 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031240', 'INGRESO');
+INSERT INTO `visita` VALUES (139, 9, '2021-09-24 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031241', 'INGRESO');
+INSERT INTO `visita` VALUES (140, 10, '2021-06-25 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031242', 'INGRESO');
+INSERT INTO `visita` VALUES (141, 11, '2021-06-26 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031243', 'INGRESO');
+INSERT INTO `visita` VALUES (142, 12, '2021-06-27 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031244', 'INGRESO');
+INSERT INTO `visita` VALUES (143, 13, '2021-06-28 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031245', 'INGRESO');
+INSERT INTO `visita` VALUES (144, 14, '2021-06-29 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031246', 'INGRESO');
+INSERT INTO `visita` VALUES (145, 15, '2021-06-30 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031247', 'INGRESO');
+INSERT INTO `visita` VALUES (146, 16, '2021-06-01 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031248', 'INGRESO');
+INSERT INTO `visita` VALUES (147, 17, '2021-08-02 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031249', 'INGRESO');
+INSERT INTO `visita` VALUES (148, 18, '2021-08-03 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031250', 'INGRESO');
+INSERT INTO `visita` VALUES (149, 19, '2021-08-04 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031251', 'INGRESO');
+INSERT INTO `visita` VALUES (150, 20, '2021-08-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031252', 'INGRESO');
+INSERT INTO `visita` VALUES (151, 10, '2021-08-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031253', 'INGRESO');
+INSERT INTO `visita` VALUES (152, 11, '2021-08-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031254', 'INGRESO');
+INSERT INTO `visita` VALUES (153, 12, '2021-08-08 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031255', 'INGRESO');
+INSERT INTO `visita` VALUES (154, 13, '2021-08-09 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031256', 'INGRESO');
+INSERT INTO `visita` VALUES (155, 14, '2021-08-10 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031257', 'INGRESO');
+INSERT INTO `visita` VALUES (156, 15, '2021-08-11 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031258', 'INGRESO');
+INSERT INTO `visita` VALUES (157, 16, '2021-11-12 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031259', 'INGRESO');
+INSERT INTO `visita` VALUES (158, 17, '2021-11-13 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031260', 'INGRESO');
+INSERT INTO `visita` VALUES (159, 18, '2021-11-14 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031261', 'INGRESO');
+INSERT INTO `visita` VALUES (160, 19, '2021-11-15 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031262', 'INGRESO');
+INSERT INTO `visita` VALUES (161, 20, '2021-11-16 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031263', 'INGRESO');
+INSERT INTO `visita` VALUES (162, 10, '2021-11-17 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031264', 'INGRESO');
+INSERT INTO `visita` VALUES (163, 11, '2021-11-18 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031265', 'INGRESO');
+INSERT INTO `visita` VALUES (164, 12, '2021-11-19 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031266', 'INGRESO');
+INSERT INTO `visita` VALUES (165, 13, '2021-11-20 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031267', 'INGRESO');
+INSERT INTO `visita` VALUES (166, 14, '2021-11-21 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031268', 'INGRESO');
+INSERT INTO `visita` VALUES (167, 15, '2021-11-22 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031269', 'INGRESO');
+INSERT INTO `visita` VALUES (168, 16, '2021-11-23 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031270', 'INGRESO');
+INSERT INTO `visita` VALUES (169, 17, '2021-11-24 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031271', 'INGRESO');
+INSERT INTO `visita` VALUES (170, 18, '2021-11-25 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031272', 'INGRESO');
+INSERT INTO `visita` VALUES (171, 19, '2021-11-26 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031273', 'INGRESO');
+INSERT INTO `visita` VALUES (172, 20, '2021-11-27 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031274', 'INGRESO');
+INSERT INTO `visita` VALUES (173, 16, '2021-03-28 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031275', 'INGRESO');
+INSERT INTO `visita` VALUES (174, 17, '2021-03-29 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031276', 'INGRESO');
+INSERT INTO `visita` VALUES (175, 18, '2021-03-30 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031277', 'INGRESO');
+INSERT INTO `visita` VALUES (176, 19, '2021-03-31 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031278', 'INGRESO');
+INSERT INTO `visita` VALUES (177, 20, '2021-04-01 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031279', 'INGRESO');
+INSERT INTO `visita` VALUES (178, 16, '2021-04-02 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031280', 'INGRESO');
+INSERT INTO `visita` VALUES (179, 17, '2021-04-03 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031281', 'INGRESO');
+INSERT INTO `visita` VALUES (180, 18, '2021-04-04 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031282', 'INGRESO');
+INSERT INTO `visita` VALUES (181, 19, '2021-04-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031283', 'INGRESO');
+INSERT INTO `visita` VALUES (182, 20, '2021-04-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031284', 'INGRESO');
+INSERT INTO `visita` VALUES (183, 16, '2021-04-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031285', 'INGRESO');
+INSERT INTO `visita` VALUES (184, 17, '2021-02-04 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031286', 'INGRESO');
+INSERT INTO `visita` VALUES (185, 18, '2021-02-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031287', 'INGRESO');
+INSERT INTO `visita` VALUES (186, 19, '2021-02-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031288', 'INGRESO');
+INSERT INTO `visita` VALUES (187, 20, '2021-02-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031289', 'INGRESO');
+INSERT INTO `visita` VALUES (188, 1, '2021-02-08 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031290', 'INGRESO');
+INSERT INTO `visita` VALUES (189, 2, '2021-02-09 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031291', 'INGRESO');
+INSERT INTO `visita` VALUES (190, 3, '2021-02-10 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031292', 'INGRESO');
+INSERT INTO `visita` VALUES (191, 4, '2021-06-11 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031293', 'INGRESO');
+INSERT INTO `visita` VALUES (192, 5, '2021-06-12 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031294', 'INGRESO');
+INSERT INTO `visita` VALUES (193, 6, '2021-06-13 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031295', 'INGRESO');
+INSERT INTO `visita` VALUES (194, 7, '2021-06-14 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031296', 'INGRESO');
+INSERT INTO `visita` VALUES (195, 8, '2021-04-05 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031297', 'INGRESO');
+INSERT INTO `visita` VALUES (196, 9, '2021-04-06 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031298', 'INGRESO');
+INSERT INTO `visita` VALUES (197, 1, '2021-04-07 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031299', 'INGRESO');
+INSERT INTO `visita` VALUES (198, 2, '2021-04-08 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031300', 'INGRESO');
+INSERT INTO `visita` VALUES (199, 3, '2021-03-29 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031301', 'INGRESO');
+INSERT INTO `visita` VALUES (200, 4, '2021-03-30 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031302', 'INGRESO');
+INSERT INTO `visita` VALUES (201, 5, '2021-03-31 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031303', 'INGRESO');
+INSERT INTO `visita` VALUES (202, 6, '2021-04-01 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031304', 'INGRESO');
+INSERT INTO `visita` VALUES (203, 7, '2021-07-18 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031305', 'INGRESO');
+INSERT INTO `visita` VALUES (204, 8, '2021-07-19 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031306', 'INGRESO');
+INSERT INTO `visita` VALUES (205, 9, '2021-07-20 03:33:02', 'Gerson', 'Omar', 'Elvir', 'Canaca', '8082031307', 'INGRESO');
 
 -- ----------------------------
 -- Procedure structure for SP_ANULAR_CARGO
@@ -425,6 +747,7 @@ SELECT MONTHNAME(fecha_visita) NOMBRE_MES, COUNT(id_visita) CANTIDAD
 	FROM visita 
 WHERE YEAR(fecha_visita) = YEAR(CURDATE()) AND status_visita = 'INGRESO'
 GROUP BY NOMBRE_MES
+;
 ;;
 delimiter ;
 
