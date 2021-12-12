@@ -71,6 +71,7 @@ function guardarPago() {
             );
             tablaMantenimientoPago.ajax.reload();
             $("#form_pago")[0].reset();
+            $("#modal_registro").modal('hide');
           }
         } else {
           Swal.fire(
@@ -179,4 +180,8 @@ function es_numero(valor) {
 
 function tiene_numeros(texto) {
   return false;
+}
+
+function abrirModal() {
+  $("#modal_registro").modal('show');
 }

@@ -55,6 +55,7 @@ $('#tablaMantenimientoConvenio').on('click', '.editar', function () {
     loadData(data);
     $('#btnAgregar').hide();
     $('#btnEditar').show();
+
   });
 
   $('#tablaMantenimientoConvenio').on('click', '.btnVer', function () {
@@ -83,8 +84,7 @@ $('#tablaMantenimientoConvenio').on('click', '.editar', function () {
     $("#cboCargo").val(id_cargo).trigger("change");
     $("#cboEstado").val(estado).trigger("change");
     $("#cboVecino").val(id_vecino).trigger("change");
-    
-    console.log(estado);
+    $("#modal_registro").modal('show');
   }
 
 function registrarConvenio() {
@@ -129,6 +129,7 @@ function registrarConvenio() {
             if(resp == 1){
                 tablaMantenimientoConvenio.ajax.reload();
                 document.getElementById('frmRegistroConvenio').reset();
+                $("#modal_registro").modal('hide');
                 Swal.fire('Mensaje de confirmacion', 'Datos guardados correctamente', 'success');
             }   
         } else {
@@ -183,6 +184,7 @@ function editarConvenio() {
           if(resp == 1){
               tablaMantenimientoConvenio.ajax.reload();
               document.getElementById('frmRegistroConvenio').reset();
+              $("#modal_registro").modal('hide');
               Swal.fire('Mensaje de confirmacion', 'Datos guardados correctamente', 'success');
           }   
       } else {
@@ -190,8 +192,6 @@ function editarConvenio() {
       }
   }); 
 }
-
-
 
 function listarComboVecino() {
     $.ajax({
@@ -262,3 +262,8 @@ function listarComboCargo() {
     });
 }
 
+
+function abrirModal() {
+  document.getElementById('frmRegistroConvenio').reset();
+  $("#modal_registro").modal('show');
+}
