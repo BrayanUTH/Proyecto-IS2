@@ -223,25 +223,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link color-blue-contrast">
-                                <i class="nav-icon fas fa-folder-open"></i>
-                                <p>
-                                    Reportes
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link" onclick="cargarContenido('contenido-principal', 'status_general_vecinos.php')">
-                                        <i class="nav-icon fas fa-users-cog"></i>
-                                        <p>
-                                            Reportes Varios
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

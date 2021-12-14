@@ -1,35 +1,35 @@
 var tablaMantenimientoDeposito;
 function listarMantenimientoDeposito() {
-  tablaMantenimientoDeposito = $("#tablaMantenimientoDeposito").DataTable({
-    dom: 'lftiprB',
-    buttons: [
-      'copy', 'csv', 'excel', 'pdf', 'print'
-    ],
-    "paging": true,
-    "ordering": true,
-    "pageLength": 10,
-    "destroy": true,
-    "async": false,
-    "responsive": true,
-    "autoWidth": false,
+    tablaMantenimientoDeposito = $("#tablaMantenimientoDeposito").DataTable({
+        dom: 'lftiprB',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        "paging": true,
+        "ordering": true,
+        "pageLength": 10,
+        "destroy": true,
+        "async": false,
+        "responsive": true,
+        "autoWidth": false,
 
-    "ajax": {
-      "method": "POST",
-      "url": "controller/deposito/controller_deposito.php?opcion=listar",
-    },
-    "columns": [
-      { "data": "id_deposito" },
-      { "data": "nombre_vecino" },
-      { "data": "fecha" },
-      { "data": "monto" },
-      { "data": "agencia_bancario" },
-      { "data": "numero_referencia" },
-    ],
-    "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-    },
-    select: true
-  });
+        "ajax": {
+            "method": "POST",
+            "url": "controller/deposito/controller_deposito.php?opcion=listar",
+        },
+        "columns": [
+            { "data": "id_deposito" },
+            { "data": "nombre_vecino" },
+            { "data": "fecha" },
+            { "data": "monto" },
+            { "data": "agencia_bancario" },
+            { "data": "numero_referencia" },
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        },
+        select: true
+    });
 }
 
 function registrarDeposito() {
@@ -60,12 +60,13 @@ function registrarDeposito() {
             if (resp == 1) {
                 tablaMantenimientoDeposito.ajax.reload();
                 document.getElementById('frmRegistroDeposito').reset();
+                $("#modal_registro").modal('hide');
                 Swal.fire('Mensaje de confirmacion', 'Datos guardados correctamente', 'success');
             }
         } else {
             Swal.fire('Mensaje de advertencia', 'La actualizacion no se pudo completar', 'warning');
         }
-    }); 
+    });
 }
 
 function listarComboVecino() {
@@ -104,3 +105,7 @@ function listarComboCargo() {
     });
 }
 
+
+function abrirModal() {
+    $("#modal_registro").modal('show');
+}

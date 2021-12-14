@@ -38,7 +38,7 @@ function listarMantenimientoCargo() {
                     // if (data === "INGRESADO") {
                     if (data === "ACTIVO") {
                         return "<button class='editar btn btn-info'><i class='fas fa-edit'></i></button>" + "&nbsp;" +
-                            "<button class='anular btn btn-warning'><i class='fas fa-edit'></i></button>"
+                            "<button class='anular btn btn-warning'><i class='fas fa-trash'></i></button>"
                     } else {
                         return "--";
                     }
@@ -87,6 +87,7 @@ function guardarCargo() {
 
                         $("#form_cargo")[0].reset();
                         tablaMantenimientoCargo.ajax.reload();
+                        $("#modal_registro").modal('hide');
                     }
                 } else {
                     Swal.fire(
@@ -266,4 +267,8 @@ function es_numero(valor) {
 
 function tiene_numeros(texto) {
     return false;
+}
+
+function abrirModal() {
+    $("#modal_registro").modal('show');
 }

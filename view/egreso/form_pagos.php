@@ -1,11 +1,49 @@
 <div class="content-header">
+    <div class="container-fluid">
+        <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">MANTENIMIENTO INFORMACION DE PAGOS</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-right">
+                    <button type="button" class="btn btn-info px-5" onclick="abrirModal();">Registrar Pago</button>
+                </div>
+                <table class="table table-bordered table-striped" id="tablaMantenimientoPago">
 
-    <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Ingresar Un Egreso o Gasto</h3>            
+                    <thead>
+                        <tr>
+                            <th># Pago</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Tipo de pago</th>
+                            <th>Descripcion</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
         </div>
-        <div class="card-body row justify-content-center">
-            <div class="col-8 ">
+    </div>
+</div>
+
+
+<!-- INICIO MODAL -->
+<div class="modal fade" id="modal_registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">REGISTRAR UN EGRESO O GASTO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form id="form_pago" name="form_pago" style="background-color: rgba(163, 168, 172, 0.507); padding: 25px; border-radius: 10px;">
                     <div class="form-group">
                         <label>Fecha del Pago</label>
@@ -28,49 +66,16 @@
                         <label for="">Descripcion del gasto:</label>
                         <textarea class="form-control" name="descripcion" id="descripcion" rows="3" maxlength="100" placeholder=""></textarea>
                     </div>
-                    <button type="button" class="btn btn-success px-5" onclick="guardarPago()">Guardar</button>
                 </form>
             </div>
-        </div>
-
-    </div>
-
-</div>
-
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="card card-secondary">
-            <div class="card-header">
-                <h3 class="card-title">Mantenimiento informacion de pagos</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered table-striped" id="tablaMantenimientoPago">
-                    <!-- <caption>DEPOSITOS VECINOS</caption> -->
-                    <thead>
-                        <tr>
-                            <th># Pago</th>
-                            <!-- <th># vicino</th> -->
-                            <th>Fecha</th>
-                            <th>Monto</th>
-                            <th>Tipo de pago</th>
-                            <th>Descripcion</th>
-                            <th>Accion</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--Detalle de la tabla vecinos -->
-
-                    </tbody>
-                    <tfoot>
-
-                    </tfoot>
-                </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                <button type="button" class="btn btn-primary" onclick="guardarPago()">APLICAR</button>
             </div>
         </div>
     </div>
 </div>
-
+<!-- FIN MODAL -->
 
 <!-- INICIO MODAL  modal para editar el deposito-->
 <div class="modal fade" id="modal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
